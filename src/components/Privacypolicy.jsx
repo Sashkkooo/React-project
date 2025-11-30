@@ -11,7 +11,7 @@ export default function PrivacyPolicy() {
 
       <h2 className="text-2xl font-semibold text-gray-800 mb-3">1. Data Controller</h2>
       <p className="mb-4">
-        The data controller is <strong>Magnetized Moment</strong>, located at <strong>Company Address</strong>. 
+        The data controller is <strong>Magnetized Moment</strong>, located at <strong>Company Address</strong>.
         For inquiries, <Link to="/contact" className="text-blue-600 underline">contact us</Link>.
       </p>
 

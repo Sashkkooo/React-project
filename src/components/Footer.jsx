@@ -52,7 +52,12 @@ export default function Footer() {
                         aria-label="Facebook"
                         className="inline-block transition-transform hover:scale-110"
                     >
-                        📘
+                        <img
+                            src="https://drive.google.com/thumbnail?id=18e8yp_ZDpw1Wk9-Qi5t87tZSfhuIXHGl&sz=w1000"
+                            alt="facebook icon"
+                            className="h-5 w-5"
+                        />
+
                     </Link>
                     <Link
                         to="https://www.instagram.com/magnetizedmoment/"
@@ -61,7 +66,11 @@ export default function Footer() {
                         aria-label="Instagram"
                         className="inline-block transition-transform hover:scale-110"
                     >
-                        📸
+                        <img
+                            src="https://drive.google.com/thumbnail?id=1-4azg-3L_ZF6tsEHOzPS7DdnyWFGAOH7&sz=w1000"
+                            alt="instagram icon"
+                            className="h-5 w-5"
+                        />
                     </Link>
                     <Link
                         to="https://www.youtube.com/@MagnetizedMoment-y9v"
@@ -70,7 +79,11 @@ export default function Footer() {
                         aria-label="YouTube"
                         className="inline-block transition-transform hover:scale-110"
                     >
-                        ▶️
+                        <img
+                            src="https://drive.google.com/thumbnail?id=1E9MbIY0jocD8NKCdBzyR5jdUSzkWPXph&sz=w1000"
+                            alt="youtube icon"
+                            className="h-5 w-5"
+                        />
                     </Link>
                     <Link
                         to="https://www.tiktok.com/@magnetized.moment"
@@ -79,7 +92,11 @@ export default function Footer() {
                         aria-label="TikTok"
                         className="inline-block transition-transform hover:scale-110"
                     >
-                        🎵
+                        <img
+                            src="https://drive.google.com/thumbnail?id=1RHV58J4tjTsebNGsLGss5FslIgc4mCe7&sz=w1000"
+                            alt="tiktok icon"
+                            className="h-5 w-5"
+                        />
                     </Link>
                 </div>
             </div>
