@@ -1,7 +1,6 @@
 import { useContext, useState } from "react";
 import { Link } from "react-router";
 import { CartContext } from "../context/CartContext.jsx";
-import { getCroppedImg } from "../utils/imageUtils.js";
 import CropModal from "./CropModal.jsx";
 
 

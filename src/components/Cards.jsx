@@ -1,6 +1,10 @@
 import ProductSection from "./ProductSection";
+import products from "../data/products.json";
 
 export default function ProductsList() {
+
+    const cards = products.filter((p) => p.category === "cards");
+
     return (
         <div className="w-full my-6">
             {/* Toolbar */}
@@ -10,23 +14,19 @@ export default function ProductsList() {
 
             {/* Grid container */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-4">
-                {/* Примерна карта */}
-                {/* Image */}
-                <ProductSection
-                    imageUrl="https://drive.google.com/thumbnail?id=1JjHqz3KW7kqDxPawsTPk7QgnYG8UNfQi&sz=w1000"
-                    link="/product-detail/3"
-                    title="Legend"
-                    price="6.00 BGN"
-                    buttonText="Add to Cart"
-                />
 
-                <ProductSection
-                    imageUrl="https://drive.google.com/thumbnail?id=18IKvkOUnMYbLQmcGgU08gX1vEdfSWhWz&sz=w1000"
-                    link="/product-detail/4"
-                    title="You are"
-                    price="6.00 BGN"
-                    buttonText="Add to Cart"
-                />
+                {cards.map((product) => (
+                    <ProductSection
+                        key={product.id}
+                        productId={product.id}
+                        price={product.price}
+                        name={product.name}
+                        imageUrls={product.imageUrls}
+                        link={`/product-detail/${product.id}`}
+                        buttonText="Add to Cart"
+                    />
+                ))}
+
             </div>
         </div>
     );

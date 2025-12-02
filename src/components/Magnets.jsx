@@ -1,8 +1,15 @@
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import ProductSection from "./ProductSection";
+import products from "../data/products.json";
+
 
 export default function ProductsList() {
-    
+
+    const magnetsAndPuzzles = products.filter(
+        (p) => p.category === "magnets" || p.category === "puzzles"
+    );
+
+
     return (
         <div className="w-full my-5">
             {/* Toolbar */}
@@ -15,25 +22,20 @@ export default function ProductsList() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 px-4">
                 {/* Magnet card */}
 
-                <ProductSection
-                    imageUrl="https://drive.google.com/thumbnail?id=1LM6SOAXcKSdyc3UwZS9prQoXcFNnlAPN&sz=w1000"
-                    link="/product-detail/1"
-                    title="Magnets"
-                    price="6.00 BGN"
-                    buttonText="Add to Cart"
-                />
+                {
+                    magnetsAndPuzzles.map((product) => (
+                        <ProductSection
+                            key={product.id}
+                            productId={product.id}
+                            price={product.price}
+                            name={product.name}
+                            imageUrls={product.imageUrls}
+                            link={`/product-detail/${product.id}`}
+                            buttonText="Add to Cart"
+                        />
+                    ))
+                }
 
-
-                {/* Puzzle card */}
-
-                <ProductSection
-                    imageUrl="https://drive.google.com/thumbnail?id=1EoElpPZiczGGv1ntviGvI-4HKfym1s1i&sz=w1000"
-                    link="/product-detail/2"
-                    title="Puzzle 4 pieces"
-                    price="20.00 BGN"
-                    buttonText="Add to Cart"
-                />
-                {/* Можеш да добавиш още карти по същия шаблон */}
             </div>
         </div>
     );
