@@ -1,16 +1,22 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { CartContext } from "../context/CartContext.jsx";
 
 export default function ProductDetail() {
     // Статични данни за визуализация
     const product = {
         id: 1,
-        name: "Sample Product",
-        category: "cards", // пробвай "magnets" за другия вариант
-        price: 19.99,
-        imageUrls: ["/sample1.webp", "/sample2.webp", "/sample3.webp"],
+        name: "Magnets",
+        category: "magnets", // пробвай "magnets" за другия вариант
+        price: 6.00,
+        imageUrls: ["https://drive.google.com/thumbnail?id=1LM6SOAXcKSdyc3UwZS9prQoXcFNnlAPN&sz=w1000"],
     };
 
     const [selectedImageUrl, setSelectedImageUrl] = useState(product.imageUrls[0]);
+    const { addToCart } = useContext(CartContext);
+
+    const handleAddToCart = () => {
+        addToCart(product, 1); // добавя с количество 1
+    };
 
     return (
         <div className="grid grid-cols-1 lg:grid-cols-[1fr,1.1fr] gap-8 max-w-[1400px] mx-auto my-12 p-8 bg-white rounded-lg shadow-lg animate-fadeIn">
@@ -116,7 +122,7 @@ export default function ProductDetail() {
                 )}
 
                 {/* Add to cart button */}
-                <button className="bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-800 transition">
+                <button className="bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-800 transition" onClick={handleAddToCart}>
                     Add to Cart
                 </button>
             </div>

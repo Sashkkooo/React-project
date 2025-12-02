@@ -1,4 +1,5 @@
 import { Link } from "react-router";
+import AboutSolutionContent from "./AboutSolutionContent";
 
 export default function Solution() {
   return (
@@ -8,51 +9,46 @@ export default function Solution() {
         Services
       </div>
 
-      {/* Services container */}
-      <div className="max-w-[800px] mx-auto p-5 bg-gray-100 rounded-lg shadow-md leading-relaxed">
-        <h2 className="text-2xl font-bold text-center text-gray-800 mb-4">
-          Our Services
-        </h2>
-        <p className="text-center text-lg text-black mb-6">
-          Description of our services goes here.
-        </p>
+      <div className="w-full max-w-[1000px] mt-5">
+        <AboutSolutionContent
+          title="Our Services"
+          paragraph="Our team specializes in creating a complete vision for your business. 
+          We design distinctive logos that not only attract attention but also reflect the essence of your brand. 
+          We also develop functional and modern websites that help your business shine in the online space."
+        />
 
-        <h3 className="text-xl font-semibold text-center text-gray-800 mt-6 mb-3">
-          Logo Design
-        </h3>
-        <p className="text-center text-lg text-black mb-6">
-          Logo design details go here.
-        </p>
+        <AboutSolutionContent
+          title="Logo Design & Branding"
+          paragraph="Creating a unique and professional logo is essential for building a strong identity for your company. 
+          Our talented designers will create a logo that will set your business apart and attract potential customers."
+        />
 
-        <h3 className="text-xl font-semibold text-center text-gray-800 mt-6 mb-3">
-          Website Development
-        </h3>
-        <p className="text-center text-lg text-black mb-6">
-          Website development details go here.
-        </p>
+        <AboutSolutionContent
+          title="Website Development"
+          paragraph="We develop websites with modern and responsive designs that are tailored to the needs of your business. 
+          A well-designed website is key to establishing your online presence and growing your customer base."
+        />
 
-        <h3 className="text-xl font-semibold text-center text-gray-800 mt-6 mb-3">
-          Sales & Marketing
-        </h3>
-        <p className="text-center text-lg text-black mb-3">
-          Sales text part 1 goes here.
-        </p>
-        <p className="text-center text-lg text-black mb-6">
-          Sales text part 2 goes here.
-        </p>
+        <AboutSolutionContent
+          title="Social Events, Custom Solutions, and Bulk Sales"
+          paragraph="In addition to our standard products and services, we also cater to social events such as weddings, christenings, and other celebrations. 
+          We create personalized magnets, cards, and other souvenirs to make your special event even more memorable. 
+          Every detail is crafted with love and care to provide a unique experience for you and your guests."
+        />
 
-        <h3 className="text-xl font-semibold text-center text-gray-800 mt-6 mb-3">
-          Why Us
-        </h3>
-        <p className="text-center text-lg text-black mb-3">
-          Why us text part 1 goes here.
-        </p>
-        <p className="text-center text-lg text-black mb-3">
-          Why us text part 2 goes here.{" "}
-          <Link to="/contact" className="text-blue-600 underline">
-            Contact us!
-          </Link>
-        </p>
+        <AboutSolutionContent
+          title="Why choose us?"
+          paragraph={
+            <>
+              Experience and creativity are key factors in achieving impressive results.
+              We keep up with the latest trends in branding and web design to help your business grow in an ever-changing environment.
+              Trust us to take your online presence to the next level. Contact us today for a free consultation and offer{" "}
+              <Link to="/contact" className="text-blue-600 underline">
+                here.
+              </Link>
+            </>
+          }
+        />
       </div>
     </div>
   )

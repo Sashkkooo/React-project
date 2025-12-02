@@ -1,9 +1,12 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Link } from "react-router";
 import MobileSidenav from "./MobileSideNav";
+import { CartContext } from "../context/CartContext.jsx";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
+
+  const { totalItems } = useContext(CartContext);
 
   return (
     <header className="mb-2">
@@ -38,10 +41,13 @@ export default function Header() {
           {/* Cart button */}
           <Link to="/cart" className="relative text-black text-2xl">
             🛒
-            <span className="absolute -top-2 -right-2 bg-red-600 text-white rounded-full px-2 text-xs">
-              0
-            </span>
+            {totalItems > 0 && (
+              <span className="absolute -top-2 -right-2 bg-red-600 text-white rounded-full px-2 text-xs">
+                {totalItems}
+              </span>
+            )}
           </Link>
+
         </div>
       </div>
 

@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import ProductSection from "./ProductSection";
 
 export default function ProductsList() {
+    
     return (
         <div className="w-full my-5">
             {/* Toolbar */}

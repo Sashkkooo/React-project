@@ -1,4 +1,5 @@
 import { Link } from "react-router"
+import AboutSolutionContent from "./AboutSolutionContent"
 
 export default function About() {
   return (
@@ -9,46 +10,35 @@ export default function About() {
       </div>
 
       {/* Content */}
-      <div className="w-full max-w-[800px] mt-5">
-        {/* Mission card */}
-        <div className="mb-5 bg-gray-100 rounded-lg shadow p-6">
-          <div className="text-center mb-4">
-            <h2 className="text-2xl font-bold">Our Mission</h2>
-          </div>
-          <div className="text-center text-lg">
-            <p>
-              Mission text goes here. Explain the purpose and vision of the company.
-            </p>
-          </div>
-        </div>
+      <div className="w-full max-w-[1000px] mt-5">
+        <AboutSolutionContent
+          title="Our Mission"
+          paragraph="We believe that small gestures bring great joy and that's why we create handmade magnets and cards. 
+        Each piece is made with attention to details and imbued with lots of love. 
+        Our mission is to help you express your emotions in an original and memorable way."
+        />
 
         {/* Team card */}
-        <div className="mb-5 bg-gray-100 rounded-lg shadow p-6">
-          <div className="text-center mb-4">
-            <h2 className="text-2xl font-bold">Our Team</h2>
-          </div>
-          <div className="text-center text-lg">
-            <p>
-              Team text goes here. Introduce the people behind the company.
-            </p>
-          </div>
-        </div>
+        <AboutSolutionContent
+          title="Our Team"
+          paragraph="Our team is made up of talented designers with extensive experience. 
+          We pay great attention to details and strive to exceed your expectations. 
+          We believe that with creativity and precision we can create something truly special together. Contact us to discuss your ideas!"
+        />
 
         {/* Contact card */}
-        <div className="mb-5 bg-gray-100 rounded-lg shadow p-6">
-          <div className="text-center mb-4">
-            <h2 className="text-2xl font-bold">Contact Us</h2>
-          </div>
-          <div className="text-center text-lg">
-            <p>
-              Contact us text goes here.{" "}
+        <AboutSolutionContent
+          title="Contact Us"
+          paragraph={
+            <>
+              Do not hesitate to contact us via the contact form{" "}
               <Link to="/contact" className="text-blue-600 underline">
-                Get in touch.
+                here.
               </Link>
-            </p>
-          </div>
-        </div>
+            </>
+          }
+        />
       </div>
-    </div>
+    </div >
   )
 }
