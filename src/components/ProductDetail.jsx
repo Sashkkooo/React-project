@@ -1,45 +1,54 @@
-import { useState, useContext } from "react";
+import { useState, useEffect, useContext } from "react";
+import { useParams } from "react-router-dom";
 import { CartContext } from "../context/CartContext.jsx";
 
 export default function ProductDetail() {
-    // Статични данни за визуализация
-    const product = {
-        id: 1,
-        name: "Magnets",
-        category: "magnets", // пробвай "magnets" за другия вариант
-        price: 6.00,
-        imageUrls: ["https://drive.google.com/thumbnail?id=1LM6SOAXcKSdyc3UwZS9prQoXcFNnlAPN&sz=w1000"],
-    };
-
-    const [selectedImageUrl, setSelectedImageUrl] = useState(product.imageUrls[0]);
+    const { id } = useParams(); // взимаме id от URL (/product-detail/:id)
+    const [product, setProduct] = useState(null);
+    const [selectedImageUrl, setSelectedImageUrl] = useState(null);
     const { addToCart } = useContext(CartContext);
 
+    useEffect(() => {
+        fetch(`http://localhost:8000/getProduct.php?id=${id}`)
+            .then((res) => res.json())
+            .then((data) => {
+                setProduct(data);
+                if (data.imageUrls && data.imageUrls.length > 0) {
+                    setSelectedImageUrl(data.imageUrls[0]); // първата снимка голяма
+                }
+            })
+            .catch((err) => console.error("Fetch error:", err));
+    }, [id]);
+
+    if (!product) return <p>Loading...</p>;
+
     const handleAddToCart = () => {
-        addToCart(product, 1); // добавя с количество 1
+        addToCart(product, 1);
     };
 
     return (
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr,1.1fr] gap-8 max-w-[1400px] mx-auto my-12 p-8 bg-white rounded-lg shadow-lg animate-fadeIn">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-[1400px] mx-auto my-12 p-8 bg-white rounded-xl shadow-sm">
             {/* Image container */}
             <div className="text-center">
                 <img
                     src={selectedImageUrl}
                     alt={product.name}
-                    className="max-w-full h-auto rounded-lg transform scale-125 clip-path inset-[10%] transition-transform duration-300 hover:scale-135"
+                    className="max-w-full h-auto rounded-xl transform scale-[1] clip-path-[inset(10%)] transition-transform duration-300 hover:scale-[1.35]"
                 />
 
                 {/* Thumbnails */}
-                <div className="flex justify-start gap-3 mt-4">
+                <div className="flex justify-start gap-3 mt-4 ml-4">
                     {product.imageUrls.map((url, idx) => (
                         <div
                             key={idx}
-                            className="border-2 border-transparent hover:border-blue-600 cursor-pointer rounded"
+                            className={`border-2 rounded cursor-pointer ${selectedImageUrl === url ? "border-blue-600" : "border-transparent"
+                                }`}
                             onClick={() => setSelectedImageUrl(url)}
                         >
                             <img
                                 src={url}
                                 alt={product.name}
-                                className="w-24 h-24 object-cover rounded"
+                                className="w-15 h-15 sm:w-24 sm:h-24 md:w-28 md:h-28 object-cover rounded transition-transform hover:scale-105"
                             />
                         </div>
                     ))}
@@ -54,7 +63,7 @@ export default function ProductDetail() {
                 </p>
 
                 {/* Shipping info */}
-                <div className="flex flex-col gap-4 mb-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
                     <div className="flex items-center bg-gray-100 p-4 rounded-lg shadow">
                         <span className="text-3xl mr-3">🚚</span>
                         <div>
@@ -71,10 +80,10 @@ export default function ProductDetail() {
                     </div>
                 </div>
 
-                {/* Extra info for cards */}
+                {/* Category-specific info */}
                 {product.category === "cards" && (
                     <>
-                        <div className="flex flex-col gap-4 mb-6">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
                             <div className="flex items-center bg-gray-100 p-4 rounded-lg shadow">
                                 <span className="text-3xl mr-3">📋</span>
                                 <div>
@@ -96,10 +105,9 @@ export default function ProductDetail() {
                     </>
                 )}
 
-                {/* Extra info for magnets */}
                 {product.category === "magnets" && (
                     <>
-                        <div className="flex flex-col gap-4 mb-6">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
                             <div className="flex items-center bg-gray-100 p-4 rounded-lg shadow">
                                 <span className="text-3xl mr-3">📋</span>
                                 <div>
@@ -121,11 +129,14 @@ export default function ProductDetail() {
                     </>
                 )}
 
-                {/* Add to cart button */}
-                <button className="bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-800 transition" onClick={handleAddToCart}>
+                <button
+                    className="bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-800 transition self-center"
+                    onClick={handleAddToCart}
+                >
                     Add to Cart
                 </button>
             </div>
         </div>
+
     );
 }

@@ -9,7 +9,7 @@ export default function Products() {
             </h1>
 
             {/* Навигация за секции */}
-            <div className="flex justify-center mb-5 bg-gray-200 p-3 rounded-md shadow-md sticky top-20 z-50">
+            <div className="flex justify-center mb-5 bg-white p-3 rounded-md shadow-md sticky top-20 z-50">
                 <Link
                     to="/products/magnets"
                     className="mx-5 text-blue-800 font-bold text-lg hover:text-blue-900 transition-colors"
@@ -28,7 +28,7 @@ export default function Products() {
             </div>
 
             {/* How it works секция */}
-            <div className="max-w-[800px] mx-auto p-5 bg-gray-100 rounded-lg shadow-md leading-relaxed text-lg">
+            <div className="max-w-[800px] mx-auto p-5 bg-white rounded-lg shadow-md leading-relaxed text-lg">
                 <h2 className="text-center text-2xl font-bold mb-5">How it works?</h2>
                 <p className="text-center mb-2">Step A: Choose your product</p>
                 <p className="text-center mb-2">Step 1: Add to cart</p>

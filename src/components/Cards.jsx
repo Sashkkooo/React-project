@@ -1,7 +1,17 @@
 import ProductSection from "./ProductSection";
-import products from "../data/products.json";
+import { useEffect, useState } from "react";
 
-export default function ProductsList() {
+
+export default function Cards() {
+    const [products, setProducts] = useState([]);
+
+    useEffect(() => {
+        fetch("http://localhost:8000/getProducts.php?category=cards")
+            .then((res) => res.json())
+            .then((data) => setProducts(data))
+            .catch((err) => console.error("Fetch error:", err));
+    }, []);
+
 
     const cards = products.filter((p) => p.category === "cards");
 
@@ -14,19 +24,14 @@ export default function ProductsList() {
 
             {/* Grid container */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-4">
-
                 {cards.map((product) => (
                     <ProductSection
-                        key={product.id}
-                        productId={product.id}
-                        price={product.price}
-                        name={product.name}
-                        imageUrls={product.imageUrls}
-                        link={`/product-detail/${product.id}`}
+                        key={product._id}
+                        product={product}
+                        link={`/product-detail/${product._id}`}
                         buttonText="Add to Cart"
                     />
                 ))}
-
             </div>
         </div>
     );
