@@ -18,9 +18,14 @@ export const CartProvider = ({ children }) => {
     });
   }, []);
 
-  const removeFromCart = useCallback((id) => {
-    setCart((prev) => prev.filter((p) => p.id !== id));
+  const removeFromCart = useCallback((index) => {
+    setCart((prev) => {
+      const updated = [...prev];
+      updated.splice(index, 1); // премахва само елемента на дадения индекс
+      return updated;
+    });
   }, []);
+
 
   const updateQty = useCallback((id, qty) => {
     setCart((prev) =>
@@ -40,9 +45,40 @@ export const CartProvider = ({ children }) => {
     [cart]
   );
 
+  const saved = useMemo(() => {
+    let discount = 0;
+
+    // Магнити
+    const magnets = cart.filter(p => p.category === "magnets");
+    const magnetCount = magnets.reduce((sum, p) => sum + (p.qty ?? 1), 0);
+    discount += Math.floor(magnetCount / 2) * 1.50;
+
+    // Картички
+    const cards = cart.filter(p => p.category === "cards");
+    const cardCount = cards.reduce((sum, p) => sum + (p.qty ?? 1), 0);
+    discount += Math.floor(cardCount / 2) * 2.00;
+
+    return discount;
+  }, [cart]);
+
+  const finalPrice = useMemo(
+    () => totalPrice - saved,
+    [totalPrice, saved]
+  );
+
   const value = useMemo(
-    () => ({ cart, addToCart, removeFromCart, updateQty, clearCart, totalItems, totalPrice }),
-    [cart, addToCart, removeFromCart, updateQty, clearCart, totalItems, totalPrice]
+    () => ({
+      cart,
+      addToCart,
+      removeFromCart,
+      updateQty,
+      clearCart,
+      totalItems,
+      totalPrice,
+      saved,
+      finalPrice
+    }),
+    [cart, addToCart, removeFromCart, updateQty, clearCart, totalItems, totalPrice, saved, finalPrice]
   );
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;

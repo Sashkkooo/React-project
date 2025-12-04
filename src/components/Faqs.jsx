@@ -5,15 +5,15 @@ function AccordionItem({ question, answer }) {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="mb-4 border rounded-md shadow-sm">
+    <div className="mb-4 border rounded-md shadow-lg bg-white-600">
       <button
         onClick={() => setOpen(!open)}
-        className="w-full text-left px-4 py-3 bg-gray-100 font-semibold text-lg hover:bg-gray-200 transition"
+        className="w-full text-left px-4 py-3 bg-white-100 font-semibold text-lg hover:bg-white-200 transition"
       >
         {question}
       </button>
       {open && (
-        <div className="px-4 py-3 text-gray-700 text-base bg-white">
+        <div className="px-4 py-3 text-white-700 text-base bg-white">
           {answer}
         </div>
       )}

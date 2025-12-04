@@ -6,55 +6,55 @@ export default function Contact() {
       <form className="space-y-4">
         {/* First name */}
         <div className="w-full">
-          <label className="block text-gray-600 mb-1">First Name</label>
+          <label className="block text-white-600 mb-1">First Name</label>
           <input
             type="text"
             placeholder="Enter your first name"
             required
-            className="w-full border border-gray-300 rounded-md p-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full border border-white-300 rounded-md p-2 text-white-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
 
         {/* Last name */}
         <div className="w-full">
-          <label className="block text-gray-600 mb-1">Last Name</label>
+          <label className="block text-white-600 mb-1">Last Name</label>
           <input
             type="text"
             placeholder="Enter your last name"
             required
-            className="w-full border border-gray-300 rounded-md p-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full border border-white-300 rounded-md p-2 text-white-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
 
         {/* Email */}
         <div className="w-full">
-          <label className="block text-gray-600 mb-1">Email</label>
+          <label className="block text-white-600 mb-1">Email</label>
           <input
             type="email"
             placeholder="Enter your email"
             required
-            className="w-full border border-gray-300 rounded-md p-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full border border-white-300 rounded-md p-2 text-white-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
 
         {/* Phone */}
         <div className="w-full">
-          <label className="block text-gray-600 mb-1">Phone</label>
+          <label className="block text-white-600 mb-1">Phone</label>
           <input
             type="tel"
             placeholder="Enter your phone number"
-            className="w-full border border-gray-300 rounded-md p-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full border border-white-300 rounded-md p-2 text-white-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
 
         {/* Message */}
         <div className="w-full">
-          <label className="block text-gray-600 mb-1">Message</label>
+          <label className="block text-white-600 mb-1">Message</label>
           <textarea
             rows="6"
             placeholder="Your message"
             required
-            className="w-full border border-gray-300 rounded-md p-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full border border-white-300 rounded-md p-2 text-white-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
           ></textarea>
         </div>
 

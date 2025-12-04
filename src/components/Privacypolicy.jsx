@@ -2,20 +2,20 @@ import { Link } from "react-router"
 
 export default function PrivacyPolicy() {
   return (
-    <div className="max-w-[800px] mx-auto p-5 bg-gray-100 rounded-lg shadow-md leading-relaxed">
-      <h1 className="text-3xl font-bold text-gray-800 mb-6">Privacy Policy</h1>
+    <div className="max-w-[800px] mx-auto p-5 bg-white rounded-lg shadow-lg leading-relaxed">
+      <h1 className="text-3xl font-bold text-white-800 mb-6">Privacy Policy</h1>
 
       <p className="mb-4">
         Intro text with <strong>Magnetized Moment</strong> company details.
       </p>
 
-      <h2 className="text-2xl font-semibold text-gray-800 mb-3">1. Data Controller</h2>
+      <h2 className="text-2xl font-semibold text-white-800 mb-3">1. Data Controller</h2>
       <p className="mb-4">
         The data controller is <strong>Magnetized Moment</strong>, located at <strong>Company Address</strong>.
         For inquiries, <Link to="/contact" className="text-blue-600 underline">contact us</Link>.
       </p>
 
-      <h2 className="text-2xl font-semibold text-gray-800 mb-3">2. Data Collected</h2>
+      <h2 className="text-2xl font-semibold text-white-800 mb-3">2. Data Collected</h2>
       <p className="mb-2">We collect the following types of data:</p>
       <ul className="list-disc ml-6 mb-4">
         <li>Personal information</li>
@@ -26,7 +26,7 @@ export default function PrivacyPolicy() {
         <li>Other relevant data</li>
       </ul>
 
-      <h2 className="text-2xl font-semibold text-gray-800 mb-3">3. Data Processing</h2>
+      <h2 className="text-2xl font-semibold text-white-800 mb-3">3. Data Processing</h2>
       <p className="mb-2">Your data is processed for the following purposes:</p>
       <ul className="list-disc ml-6 mb-4">
         <li>Order fulfillment</li>
@@ -35,7 +35,7 @@ export default function PrivacyPolicy() {
         <li>Legal compliance</li>
       </ul>
 
-      <h2 className="text-2xl font-semibold text-gray-800 mb-3">4. Legal Basis</h2>
+      <h2 className="text-2xl font-semibold text-white-800 mb-3">4. Legal Basis</h2>
       <p className="mb-2">We process data based on:</p>
       <ul className="list-disc ml-6 mb-4">
         <li>Consent</li>
@@ -44,10 +44,10 @@ export default function PrivacyPolicy() {
         <li>Legitimate interests</li>
       </ul>
 
-      <h2 className="text-2xl font-semibold text-gray-800 mb-3">5. Data Retention</h2>
+      <h2 className="text-2xl font-semibold text-white-800 mb-3">5. Data Retention</h2>
       <p className="mb-4">Data is retained only as long as necessary for the purposes stated.</p>
 
-      <h2 className="text-2xl font-semibold text-gray-800 mb-3">6. Data Sharing</h2>
+      <h2 className="text-2xl font-semibold text-white-800 mb-3">6. Data Sharing</h2>
       <p className="mb-2">We may share data with:</p>
       <ul className="list-disc ml-6 mb-4">
         <li>Service providers</li>
@@ -56,7 +56,7 @@ export default function PrivacyPolicy() {
         <li>Legal authorities</li>
       </ul>
 
-      <h2 className="text-2xl font-semibold text-gray-800 mb-3">7. Your Rights</h2>
+      <h2 className="text-2xl font-semibold text-white-800 mb-3">7. Your Rights</h2>
       <p className="mb-2">You have the right to:</p>
       <ul className="list-disc ml-6 mb-4">
         <li>Access your data</li>
@@ -67,16 +67,16 @@ export default function PrivacyPolicy() {
         <li>Data portability</li>
       </ul>
 
-      <h2 className="text-2xl font-semibold text-gray-800 mb-3">8. Security Measures</h2>
+      <h2 className="text-2xl font-semibold text-white-800 mb-3">8. Security Measures</h2>
       <p className="mb-4">We implement technical and organizational measures to protect your data.</p>
 
-      <h2 className="text-2xl font-semibold text-gray-800 mb-3">9. Complaints</h2>
+      <h2 className="text-2xl font-semibold text-white-800 mb-3">9. Complaints</h2>
       <p className="mb-4">
         You may file complaints with the Data Protection Authority:{" "}
         <Link to="http://www.cpdp.bg" className="text-blue-600 underline">www.cpdp.bg</Link>.
       </p>
 
-      <h2 className="text-2xl font-semibold text-gray-800 mb-3">Cookies</h2>
+      <h2 className="text-2xl font-semibold text-white-800 mb-3">Cookies</h2>
       <p className="mb-2">We use cookies to improve your experience.</p>
       <p className="mb-2">Types of cookies include:</p>
       <ul className="list-disc ml-6 mb-4">
