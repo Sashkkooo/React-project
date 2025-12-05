@@ -74,9 +74,12 @@ export default function Cart() {
                                 <span>BGN {finalPrice.toFixed(2)}</span>
                             </div>
 
-                            <button className="mt-6 w-full bg-green-600 text-white py-2 rounded hover:bg-purple-700">
+                            <Link
+                                to="/checkout"
+                                className="mt-6 w-full bg-green-600 text-white py-2 px-4 rounded hover:bg-purple-700"
+                            >
                                 Checkout
-                            </button>
+                            </Link>
                         </div>
                     </div>
                 ) : (

@@ -37,7 +37,7 @@ export default function CropModal({ image, aspectOptions = [1], onClose, onSave 
 
     return createPortal(
         <div className="fixed inset-0 z-[9999] bg-black/70 flex items-center justify-center">
-            <div className="bg-white rounded-lg shadow-xl w-[480px] max-w-[90vw]">
+            <div className="bg-white rounded-lg shadow-xl w-[800px] max-w-[90vw]">
                 <div className="relative w-full h-[360px]">
                     <Cropper
                         image={image}

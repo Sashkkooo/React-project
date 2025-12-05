@@ -15,6 +15,7 @@ import Magnets from './components/Magnets'
 import Cards from './components/Cards'
 import ProductDetail from './components/ProductDetail'
 import Example from './components/Example'
+import Checkout from './components/Checkout'
 
 function App() {
 
@@ -35,6 +36,7 @@ function App() {
         <Route path='/products/cards' element={<Cards />} />
         <Route path="/product-detail/:id" element={<ProductDetail />} />
         <Route path="/example" element={<Example />} />
+        <Route path="/checkout" element={<Checkout />} />
       </Routes>
       <Footer />
     </>
