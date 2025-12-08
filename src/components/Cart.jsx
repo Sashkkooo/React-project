@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { Link } from "react-router";
 import { CartContext } from "../context/CartContext.jsx";
 import CropModal from "./CropModal.jsx";
@@ -12,26 +12,71 @@ export default function Cart() {
     const [cropImage, setCropImage] = useState();
     const [currentProduct, setCurrentProduct] = useState();
     const [uploads, setUploads] = useState({});
+    const [uploadFiles, setUploadFiles] = useState({});
+    const [cropQueue, setCropQueue] = useState([]); // ✅ опашка за няколко снимки
 
     const aspectOptions = getAspectRatio(currentProduct);
 
+    // ✅ helper за конвертиране на dataURL в File
+    const dataURLtoFile = (dataUrl, filename) => {
+        const arr = dataUrl.split(",");
+        const mime = arr[0].match(/:(.*?);/)[1];
+        const bstr = atob(arr[1]);
+        let n = bstr.length;
+        const u8arr = new Uint8Array(n);
+        while (n--) {
+            u8arr[n] = bstr.charCodeAt(n);
+        }
+        return new File([u8arr], filename, { type: mime });
+    };
+
     const handleUpload = (product, e) => {
-        const file = e.target.files?.[0];
-        if (file) {
-            const imageURL = URL.createObjectURL(file);
-            setCropImage(imageURL);
+        const files = Array.from(e.target.files || []);
+        if (files.length > 0) {
+            // ✅ Създаваме crop queue с оригиналните файлове
+            const queue = files.map((file) => ({
+                file,
+                url: URL.createObjectURL(file),
+            }));
+
             setCurrentProduct(product);
+            setCropQueue(queue);
+            setCropImage(queue[0].url); // показваме първата снимка
         }
     };
 
     const handleSaveCrop = async (dataUrl) => {
+        // ✅ Запазваме dataURL за preview
         setUploads((prev) => ({
             ...prev,
             [currentProduct.id]: [...(prev[currentProduct.id] || []), dataUrl],
         }));
-        setCropImage();
-        setCurrentProduct();
+
+        // ✅ Конвертираме crop-натото изображение в File и го добавяме
+        const croppedFile = dataURLtoFile(
+            dataUrl,
+            `crop_${currentProduct.id}_${Date.now()}.png`
+        );
+        setUploadFiles((prev) => ({
+            ...prev,
+            [currentProduct.id]: [...(prev[currentProduct.id] || []), croppedFile],
+        }));
+
+        // ✅ Махаме първата снимка от опашката и показваме следващата
+        const [, ...rest] = cropQueue;
+        if (rest.length > 0) {
+            setCropQueue(rest);
+            setCropImage(rest[0].url);
+        } else {
+            setCropQueue([]);
+            setCropImage(null);
+            setCurrentProduct(null);
+        }
     };
+
+    useEffect(() => {
+        localStorage.setItem("cart", JSON.stringify(cart));
+    }, [cart]);
 
     return (
         <>
@@ -76,6 +121,7 @@ export default function Cart() {
 
                             <Link
                                 to="/checkout"
+                                state={{ uploadFiles, finalPrice }}
                                 className="mt-6 w-full bg-green-600 text-white py-2 px-4 rounded hover:bg-purple-700"
                             >
                                 Checkout
@@ -99,7 +145,11 @@ export default function Cart() {
                 <CropModal
                     image={cropImage}
                     aspectOptions={getAspectRatio(currentProduct)}
-                    onClose={() => setCropImage(null)}
+                    onClose={() => {
+                        setCropQueue([]);
+                        setCropImage(null);
+                        setCurrentProduct(null);
+                    }}
                     onSave={handleSaveCrop}
                 />
             )}

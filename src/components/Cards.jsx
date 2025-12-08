@@ -1,18 +1,23 @@
 import ProductSection from "./ProductSection";
 import { useEffect, useState } from "react";
 
-
 export default function Cards() {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
         fetch("http://localhost:8000/getProducts.php?category=cards")
             .then((res) => res.json())
-            .then((data) => setProducts(data))
+            .then((data) => {
+                if (data.success) {
+                    setProducts(data.products);
+                } else {
+                    console.error("Error loading products:", data.message);
+                }
+            })
             .catch((err) => console.error("Fetch error:", err));
     }, []);
 
-
+    // вече products е правилният масив
     const cards = products.filter((p) => p.category === "cards");
 
     return (

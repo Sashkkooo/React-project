@@ -25,11 +25,13 @@ export default function CartItem({ product, uploads, onUpload, onIncreaseQty, on
                 {/* Upload button */}
                 {product.category !== "cards" && (
                     <>
+                        {/* ✅ input с multiple и id за връзка с label */}
                         <input
+                            id={`upload-${product.id}`}
                             type="file"
                             accept="image/*"
-                            className="hidden"
-                            id={`upload-${product.id}`}
+                            multiple
+                            className="hidden" // скриваме стандартния input
                             onChange={(e) => onUpload(product, e)}
                         />
                         <label

@@ -1,12 +1,21 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { Link } from "react-router";
 import MobileSidenav from "./MobileSideNav";
 import { CartContext } from "../context/CartContext.jsx";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
-
   const { totalItems } = useContext(CartContext);
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    // Проверяваме дали има токен в localStorage
+    const token = localStorage.getItem("jwt");
+    if (token) {
+      setIsLoggedIn(true);
+    }
+  }, []);
 
   return (
     <header className="mb-2">
@@ -30,6 +39,13 @@ export default function Header() {
 
         {/* End items */}
         <div className="flex items-center gap-4">
+          {/* Условие: ако е логнат → Profile, иначе Login */}
+          {isLoggedIn ? (
+            <Link to="/profile">Profile</Link>
+          ) : (
+            <Link to="/login">Login</Link>
+          )}
+
           {/* Mobile menu button */}
           <button className="md:hidden" onClick={() => setOpen(true)}>☰</button>
 
@@ -47,7 +63,6 @@ export default function Header() {
               </span>
             )}
           </Link>
-
         </div>
       </div>
 

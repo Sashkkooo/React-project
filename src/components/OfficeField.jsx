@@ -54,7 +54,10 @@ export default function OfficeField({ office, cityID, setFormData }) {
                             onClick={() => {
                                 setFormData((prev) => ({
                                     ...prev,
-                                    office: o.id?.toString() || o.name,
+                                    office: {
+                                        name: o.name,
+                                        fullAddress: o.fullAddress,
+                                    },
                                     selectedOffice: {
                                         id: o.id,
                                         code: o.code,

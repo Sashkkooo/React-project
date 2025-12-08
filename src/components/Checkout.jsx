@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useLocation } from "react-router"; // ✅ за да вземем uploadFiles и finalPrice от Cart
 import SubmitButton from "./SubmitButton";
 import InputField from "./InputField";
 import DeliveryOptionSelector from "./DeliveryOptionSelector";
@@ -13,6 +14,10 @@ import AlertBox from "./AlertBox";
 import { calculateShipping } from "../utils/shippingPriceUtil";
 
 export default function Checkout() {
+    const location = useLocation();
+    const uploadFiles = location.state?.uploadFiles || {}; // ✅ файловете от Cart
+    const finalPrice = location.state?.finalPrice || 0;    // ✅ крайната цена от Cart
+
     const [formData, setFormData] = useState({
         email: "",
         name: "",
@@ -22,7 +27,7 @@ export default function Checkout() {
         cityID: null,
         postCode: "",
         deliveryOption: "",
-        office: "",
+        office: null, // ✅ тук ще пазим избрания офис като обект
         selectedOffice: null,
         address: {
             streetOrQuarter: "",
@@ -83,11 +88,72 @@ export default function Checkout() {
         try {
             setAlert({ type: "loading", text: "Изпращане на поръчката..." });
 
-            // Викаме helper-а от util
+            // Изчисляване на доставка
             const result = await calculateShipping(formData, 5, 0, []);
-            setShippingPrice(result.price || null);
+            const shipping = result.price || 0;
+            setShippingPrice(shipping);
 
-            setAlert({ type: "success", text: "Поръчката е изпратена успешно!" });
+            // Вземаме cart от localStorage
+            const cart = JSON.parse(localStorage.getItem("cart")) || [];
+            const totalPrice = cart.reduce((sum, item) => sum + item.price * (item.qty ?? 1), 0);
+
+            // Създаваме FormData
+            const fd = new FormData();
+            fd.append("userId", localStorage.getItem("userId") || "guest");
+            fd.append("cart", JSON.stringify(cart));
+            fd.append("totalPrice", totalPrice);
+            fd.append("shippingPrice", shipping);
+            fd.append("finalPrice", finalPrice); // ✅ добавено
+
+            // ✅ Добавяме данните от формата
+            fd.append("email", formData.email);
+            fd.append("name", formData.name);
+            fd.append("surname", formData.surname);
+            fd.append("phone", formData.phone);
+            fd.append("city", formData.city);
+            fd.append("cityID", formData.cityID || "");
+            fd.append("postCode", formData.postCode);
+            fd.append("deliveryOption", formData.deliveryOption);
+
+            // ✅ само името на офиса
+            const officeName =
+                formData.deliveryOption === "office" && formData.office && typeof formData.office === "object"
+                    ? formData.office.name || ""
+                    : "";
+            const officeAddress =
+                formData.deliveryOption === "office" && formData.office && typeof formData.office === "object"
+                    ? formData.office.fullAddress || ""
+                    : "";
+            fd.append("officeName", officeName);
+            fd.append("officeAddress", officeAddress);
+
+            fd.append("address", JSON.stringify(formData.address));
+            fd.append("billingRequired", formData.billingRequired);
+            fd.append("billingType", formData.billingType);
+            fd.append("billingInfo", JSON.stringify(formData.billingInfo));
+            fd.append("companyInfo", JSON.stringify(formData.companyInfo));
+
+            // ✅ Добавяме файловете (crop-натите)
+            Object.values(uploadFiles).forEach((files) => {
+                files.forEach((file) => {
+                    fd.append("files[]", file);
+                });
+            });
+
+            // Изпращаме към saveOrder.php
+            const res = await fetch("http://localhost:8000/saveOrder.php", {
+                method: "POST",
+                body: fd,
+            });
+
+            const data = await res.json();
+
+            if (data.success) {
+                setAlert({ type: "success", text: "Поръчката е изпратена успешно!" });
+                localStorage.removeItem("cart");
+            } else {
+                setAlert({ type: "error", text: data.message || "Грешка при изпращане на поръчката." });
+            }
         } catch (err) {
             setAlert({
                 type: "error",
@@ -107,7 +173,6 @@ export default function Checkout() {
         })();
     }, [formData.deliveryOption]);
 
-
     return (
         <div className="max-w-[600px] mx-auto bg-gray-50 p-6 rounded-lg shadow-md">
             <form className="space-y-4" onSubmit={handleSubmit}>
@@ -116,95 +181,33 @@ export default function Checkout() {
                 </h2>
 
                 {/* Основни полета */}
-                <InputField
-                    label="Имейл"
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    placeholder="example@domain.com"
-                    required
-                />
-                <InputField
-                    label="Име"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    placeholder="Иван"
-                    required
-                />
-                <InputField
-                    label="Фамилия"
-                    name="surname"
-                    value={formData.surname}
-                    onChange={handleChange}
-                    placeholder="Иванов"
-                    required
-                />
-                <InputField
-                    label="Телефон"
-                    type="tel"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    placeholder="0888888888 или +359877777777"
-                    required
-                    pattern="^(0\\d{9}|\\+359\\d{9})$"
-                />
+                <InputField label="Имейл" type="email" name="email" value={formData.email} onChange={handleChange} required />
+                <InputField label="Име" name="name" value={formData.name} onChange={handleChange} required />
+                <InputField label="Фамилия" name="surname" value={formData.surname} onChange={handleChange} required />
+                <InputField label="Телефон" type="tel" name="phone" value={formData.phone} onChange={handleChange} required />
 
                 {/* Град */}
                 <CitySelector formData={formData} setFormData={setFormData} />
-
-                <InputField
-                    label="Пощенски код"
-                    name="postCode"
-                    value={formData.postCode}
-                    onChange={handleChange}
-                    placeholder="1000"
-                    required
-                />
+                <InputField label="Пощенски код" name="postCode" value={formData.postCode} onChange={handleChange} required />
 
                 {/* Доставка */}
-                <DeliveryOptionSelector
-                    deliveryOption={formData.deliveryOption}
-                    setFormData={setFormData}
-                />
+                <DeliveryOptionSelector deliveryOption={formData.deliveryOption} setFormData={setFormData} />
 
                 {/* Офис или адрес */}
                 {formData.deliveryOption === "office" && (
-                    <OfficeField
-                        office={formData.office}
-                        cityID={formData.cityID}
-                        setFormData={setFormData}
-                    />
+                    <OfficeField office={formData.office} cityID={formData.cityID} setFormData={setFormData} />
                 )}
-
                 {formData.deliveryOption === "address" && (
-                    <AddressFields
-                        address={formData.address}
-                        cityID={formData.cityID}   // ← добави това!
-                        setFormData={setFormData}
-                    />
+                    <AddressFields address={formData.address} cityID={formData.cityID} setFormData={setFormData} />
                 )}
 
                 {/* Фактура */}
-                <BillingToggle
-                    billingRequired={formData.billingRequired}
-                    setFormData={setFormData}
-                />
-
+                <BillingToggle billingRequired={formData.billingRequired} billingType={formData.billingType} setFormData={setFormData} />
                 {formData.billingRequired && formData.billingType === "individual" && (
-                    <BillingIndividual
-                        billingInfo={formData.billingInfo}
-                        setFormData={setFormData}
-                    />
+                    <BillingIndividual billingInfo={formData.billingInfo} setFormData={setFormData} />
                 )}
-
                 {formData.billingRequired && formData.billingType === "company" && (
-                    <BillingCompany
-                        companyInfo={formData.companyInfo}
-                        setFormData={setFormData}
-                    />
+                    <BillingCompany companyInfo={formData.companyInfo} setFormData={setFormData} />
                 )}
 
                 {/* Цена за доставка */}
@@ -218,5 +221,4 @@ export default function Checkout() {
             </form>
         </div>
     );
-
 }

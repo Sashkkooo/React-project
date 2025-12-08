@@ -3,11 +3,17 @@ import { useEffect, useState } from "react";
 
 export default function Magnets() {
     const [products, setProducts] = useState([]);
-    
+
     useEffect(() => {
         fetch("http://localhost:8000/getProducts.php?categories=magnets,puzzles")
             .then((res) => res.json())
-            .then((data) => setProducts(data))
+            .then((data) => {
+                if (data.success) {
+                    setProducts(data.products);
+                } else {
+                    console.error("Error loading products:", data.message);
+                }
+            })
             .catch((err) => console.error("Fetch error:", err));
     }, []);
 
