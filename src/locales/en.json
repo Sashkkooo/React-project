@@ -1,0 +1,428 @@
+{
+  "home": "Home",
+  "products_nav": "Products",
+  "about": "About",
+  "services": "Services",
+  "contact": "Contact",
+  "welcome_title": "Personalised photo magnets and stylish cards for any occasion.",
+  "create_our_services": "Create something unique with personalized magnets and stylish high quality cards!",
+  "browse_button": "Browse products",
+  "we_offer": "From idea to reality - design, web and custom services for every occasion!",
+  "logo_card": "Do you need a professional design, website or custom services? We are here for you!",
+  "profile": "Profile",
+  "logout": "Logout",
+  "login": "Login",
+  "register": "Register",
+  "check_more_btn": "Check out more",
+  "why_us": "Why choose us?",
+  "f_adv": "High print quality",
+  "s_adv": "Fast and secure delivery",
+  "t_adv": "100% customized products",
+  "productCategories": {
+    "magnets": {
+      "title": "Magnets",
+      "description": "Personal magnets with unique design"
+    },
+    "cards": {
+      "title": "Cards",
+      "description": "Special cards for all occasion"
+    },
+    "stickers_and_business_cards": {
+      "title": "Stickers and Business Cards",
+      "description": "Personal stickers and business cards"
+    }
+  },
+  "products": {
+    "magnets": {
+      "name": "Personalized magnets",
+      "description": "Personalized magnets",
+      "options": {
+        "1": {
+          "description": "Personalized magnet"
+        },
+        "2": {
+          "description": "Personalized magnets"
+        }
+      }
+    },
+    "puzzles": {
+      "puzzle1": {
+        "name": "Magnet puzzle with 4 pieces"
+      },
+      "puzzle2": {
+        "name": "Magnet puzzle with 6 pieces"
+      },
+      "puzzle3": {
+        "name": "Magnet puzzle with 9 pieces"
+      },
+      "puzzle4": {
+        "name": "Magnet puzzle with 12 pieces"
+      },
+      "puzzle5": {
+        "name": "Magnet puzzle with 15 pieces"
+      },
+      "puzzle6": {
+        "name": "Magnet puzzle with 16 pieces"
+      },
+      "puzzle7": {
+        "name": "Magnet puzzle with 18 pieces"
+      }
+    },
+    "cards": {
+      "If_you_want": {
+        "name": "If you want to feel like a star",
+        "description": "Bueatiful card for your ocasion"
+      },
+      "predefined2": {
+        "name": "happy national holiday",
+        "description": "Beautiful pre-designed card 2"
+      },
+      "predefined3": {
+        "name": "The mother is one",
+        "description": "Beautiful pre-designed card 3"
+      },
+      "predefined4": {
+        "name": "Team Groom",
+        "description": "Beautiful pre-designed card 1"
+      },
+      "predefined5": {
+        "name": "Bride To Be",
+        "description": "Beautiful pre-designed card 1"
+      },
+      "predefined6": {
+        "name": "Blow the candle",
+        "description": "Beautiful pre-designed card 1"
+      },
+      "predefined7": {
+        "name": "Wisdom comes with the years",
+        "description": "Beautiful pre-designed card 1"
+      },
+      "predefined8": {
+        "name": "You know you're old",
+        "description": "Beautiful pre-designed card 1"
+      },
+      "predefined9": {
+        "name": "Queen's Birthday",
+        "description": "Beautiful pre-designed card 1"
+      },
+      "predefined10": {
+        "name": "Birthday party is like a fitness",
+        "description": "Beautiful pre-designed card 1"
+      },
+      "predefined11": {
+        "name": "Happy баба Марта",
+        "description": "Beautiful pre-designed card 1"
+      },
+      "predefined12": {
+        "name": "Do not extinguish",
+        "description": "Beautiful pre-designed card 1"
+      },
+      "predefined13": {
+        "name": "Happy name day",
+        "description": "Beautiful pre-designed card 1"
+      },
+      "predefined14": {
+        "name": "It's your time",
+        "description": "Beautiful pre-designed card 1"
+      },
+      "predefined15": {
+        "name": "Congratulations",
+        "description": "Beautiful pre-designed card 1"
+      },
+      "predefined16": {
+        "name": "You are naked",
+        "description": "Beautiful pre-designed card 1"
+      },
+      "predefined17": {
+        "name": "Keep calm",
+        "description": "Beautiful pre-designed card 1"
+      },
+      "predefined18": {
+        "name": "Your life is",
+        "description": "Beautiful pre-designed card 1"
+      },
+      "predefined19": {
+        "name": "Years are just",
+        "description": "Beautiful pre-designed card 1"
+      },
+      "predefined20": {
+        "name": "However you spin",
+        "description": "Beautiful pre-designed card 1"
+      },
+      "predefined21": {
+        "name": "Without you I am",
+        "description": "Beautiful pre-designed card 1"
+      },
+      "predefined22": {
+        "name": "Love inspires you",
+        "description": "Beautiful pre-designed card 1"
+      },
+      "predefined23": {
+        "name": "Happy mother's day",
+        "description": "Beautiful pre-designed card 1"
+      },
+      "predefined24": {
+        "name": "You are like",
+        "description": "Beautiful pre-designed card 1"
+      },
+      "predefined25": {
+        "name": "To mom",
+        "description": "Beautiful pre-designed card 1"
+      },
+      "custom": {
+        "name": "Custom Cards",
+        "options": {
+          "1": {
+            "description": "Create your own custom card with a photo - 1 card"
+          },
+          "3": {
+            "description": "Create your own custom cards with photos - 3 cards"
+          },
+          "5": {
+            "description": "Create your own custom cards with photos - 5 cards"
+          }
+        }
+      }
+    }
+  },
+  "mission": "Our Mission",
+  "mission_text": "We believe that small gestures bring great joy and that's why we create handmade magnets and cards. Each piece is made with attention to details and imbued with lots of love. Our mission is to help you express your emotions in an original and memorable way.",
+  "team": "Our Team",
+  "team_text": "Our team is made up of talented designers with extensive experience. We pay great attention to details and strive to exceed your expectations.  We believe that with creativity and precision we can create something truly special together.  Contact us to discuss your ideas! ",
+  "contact_us": "Contact Us",
+  "contact_us_text": "Do not hesitate to contact us via the contact form",
+  "our_services_title": "Our Services",
+  "our_services_text": "Our team specializes in creating a complete vision for your business. We design distinctive logos that not only attract attention but also reflect the essence of your brand. We also develop functional and modern websites that help your business shine in the online space.",
+  "logo_design_title": "Logo Design & Branding",
+  "logo_design_text": "Creating a unique and professional logo is essential for building a strong identity for your company. Our talented designers will create a logo that will set your business apart and attract potential customers.",
+  "website_title": "Website Development",
+  "website_text": "We develop websites with modern and responsive designs that are tailored to the needs of your business. A well-designed website is key to establishing your online presence and growing your customer base. This website, for example, was entirely developed by us using Angular, a modern framework for web development, and TypeScript, a powerful programming language that ensures reliability and scalability.",
+  "sales_title": "Social Events, Custom Solutions, and Bulk Sales",
+  "sales_text1": "In addition to our standard products and services, we also cater to social events such as weddings, christenings, and other celebrations. We create personalized magnets, cards, and other souvenirs to make your special event even more memorable. Every detail is crafted with love and care to provide a unique experience for you and your guests.",
+  "sales_text2": "Additionally, we offer bulk sales and custom orders for businesses. Whether you need wholesale quantities of our standard products or personalized items tailored to your needs, we are here to help. Contact us for a free consultation and quote.",
+  "why_us_text1": "Experience and creativity are key factors in achieving impressive results. We keep up with the latest trends in branding and web design to help your business grow in an ever-changing environment.",
+  "why_us_text2": "Trust us to take your online presence to the next level. Contact us today for a free consultation and offer",
+  "orders": "Orders",
+  "order_id": "Order ID",
+  "customer": "Customer",
+  "status": "Status",
+  "actions": "Actions",
+  "created": "Created",
+  "view": "View",
+  "complete": "Complete",
+  "cancel": "Cancel",
+  "admin_panel": "Admin Panel",
+  "street": "Street",
+  "tabs": {
+    "users": "Users",
+    "products": "Products",
+    "orders": "Orders"
+  },
+  "name": "Name",
+  "role": "Role",
+  "order_details": "Order Details",
+  "delivery": "Delivery",
+  "office": "Office",
+  "office_address": "Office Address",
+  "address": "Address",
+  "how_to_order_q": "How can I place an order?",
+  "how_to_order_a": "You can place an order by following these steps:",
+  "how_to_order_1": "1. Select the desired product and add it to your cart.",
+  "how_to_order_2": "2. Go to the \"Cart\" section and upload the required photos for the selected product, if applicable.",
+  "how_to_order_3": "3. When uploading photos, a window for resizing the image will appear. Adjust the size as needed.",
+  "how_to_order_4": "4. After uploading and resizing the photos, complete your order by following the confirmation and payment steps.",
+  "order_time_q": "What is the delivery time?",
+  "order_time_a": "The delivery time depends on the number of orders. Typically, delivery takes 1 to 3 business days.",
+  "kind_of_photos_q": "What kind of photos can I use?",
+  "kind_of_photos_a": "You can use photos that are your original work or images for which you hold the rights.",
+  "photo_resolution_q": "What quality should the photos be?",
+  "photo_resolution_a": "The quality of the photos is entirely up to you. The higher the resolution, the better the final product will be. We recommend well-lit and high-resolution photos to achieve the best possible result when crafting the magnet. Avoid blurry or pixelated images.",
+  "delivery_offer_q": "Do you offer delivery?",
+  "delivery_offer_a": "Yes, we offer delivery to your address or to a courier office nationwide. The delivery cost is determined according to the courier company's rates.",
+  "chose_number_q": "Can I choose the number of offered products?",
+  "chose_number_a": "If you would like to order a different quantity than the one listed on the page, please contact us via the contact form",
+  "fr_a_q": "Frequently Asked Questions",
+  "what_other_services_q": "What other services do you offer?",
+  "what_other_services_a": "You can check out the full list of services we provide",
+  "logo_website_q": "What is the timeframe for creating a logo or website?",
+  "logo_website_a": "The timeframe for creating logos and websites ranges from 1 to 4 weeks, depending on the complexity and specifics of the project.",
+  "logo_what_q": "What does the logo creation service include?",
+  "logo_what_a": "Our logo creation service includes:",
+  "logo_what_1": "1. A consultation to define the concept and vision for your logo.",
+  "logo_what_2": "2. Development of several logo variations for you to choose from.",
+  "logo_what_3": "3. Up to three revisions to align with your preferences and requirements.",
+  "logo_what_4": "4. Delivery of the final logo in all necessary file formats (for print and web).",
+  "website_what_q": "What website creation services do you offer?",
+  "website_what_a": "We offer:",
+  "website_what_1": "• Development of corporate, personal, and e-commerce websites.",
+  "website_what_2": "• Complete planning and design tailored to your needs.",
+  "website_what_3": "• Responsive design, ensuring your website looks great on both desktop and mobile devices.",
+  "final_design_q": "Can I see a preliminary design before finalizing my order?",
+  "final_design_a": "Yes, we will send you a preliminary design for approval. You will have the opportunity to suggest changes or adjustments to ensure the final version meets your expectations.",
+  "contact_title": "Contact us",
+  "first_name": "First Name",
+  "last_name": "Last Name",
+  "email": "Email",
+  "phone": "Phone Number",
+  "message": "Message",
+  "sendBtn": "Send",
+  "title": "Privacy Policy",
+  "intro1": "We at ",
+  "intro2": "are committed to protecting our customers' personal data and complying with the General Data Protection Regulation (GDPR) and the Personal Data Protection Act of the Republic of Bulgaria. This privacy policy outlines the data we collect, how we use it, and your rights regarding it.",
+  "data_controller_title": "Data Controller",
+  "data_controller_content1": "The data controller is ",
+  "data_controller_content2": " headquartered at ",
+  "data_controller_content3": " For questions regarding the processing of personal data, you can contact us",
+  "data_collected_title": "Types of Data Collected",
+  "data_collected_content": "We collect the following categories of personal data:",
+  "data_collected_list1": "First and last name",
+  "data_collected_list2": "Email address",
+  "data_collected_list3": "Phone number",
+  "data_collected_list4": "Delivery address",
+  "data_collected_list5": "Payment information",
+  "data_collected_list6": "Details of the services used and order history",
+  "data_processing_title": "Purpose of Data Processing",
+  "data_processing_content": "We use your personal data for the following purposes:",
+  "data_processing_list1": "Processing and fulfilling your orders",
+  "data_processing_list2": "Sending information about products, promotions, and news (only with your consent)",
+  "data_processing_list3": "Improving our services and analyzing customer preferences",
+  "data_processing_list4": "Complying with legal obligations for storing accounting and financial documents",
+  "legal_basis_title": "Legal Basis for Processing",
+  "legal_basis_content": "The processing of personal data is based on:",
+  "legal_basis_list1": "Your consent (e.g., for receiving marketing communications)",
+  "legal_basis_list2": "Contract performance (e.g., when you place an order)",
+  "legal_basis_list3": "Our legitimate interest (e.g., for improving our services)",
+  "legal_basis_list4": "Compliance with legal requirements (e.g., for tax reporting)",
+  "data_retention_title": "Data Retention",
+  "data_retention_content": "Your personal data will be retained for the period necessary to fulfill the purposes outlined above unless the law requires a longer retention period.",
+  "data_sharing_title": "Data Sharing",
+  "data_sharing_content": "We may share your personal data with the following categories of recipients:",
+  "data_sharing_list1": "Courier service providers for order delivery",
+  "data_sharing_list2": "Payment processors for handling transactions",
+  "data_sharing_list3": "External consultants and partners who help us improve our services",
+  "data_sharing_list4": "Government authorities when required by law",
+  "your_rights_title": "Your Rights",
+  "your_rights_content": "You have the following rights regarding your personal data:",
+  "your_rights_list1": "The right to access your data",
+  "your_rights_list2": "The right to correct inaccurate or incomplete data",
+  "your_rights_list3": "The right to erasure (\"right to be forgotten\")",
+  "your_rights_list4": "The right to object to the processing of personal data",
+  "your_rights_list5": "The right to data portability",
+  "your_rights_list6": "The right to withdraw your consent at any time (where processing is based on consent)",
+  "security_measures_title": "Security Measures",
+  "security_measures_content": "We implement appropriate technical and organizational measures to protect your personal data against unauthorized access, loss, or destruction.",
+  "complaints_title": "Complaints",
+  "complaints_content": "If you believe your rights have been violated, you can file a complaint with the Bulgarian Commission for Personal Data Protection at: 2 Prof. Tsvetan Lazarov Blvd., Sofia 1592, or visit their website:",
+  "cookies_title": "Cookie Policy",
+  "cookies_content1": "We use cookies to enhance your experience on our website. Cookies are small text files stored on your device when you visit the site. They help us recognize your browser, analyze site traffic, and improve functionality.",
+  "cookies_content2": " The main purposes of using cookies include:",
+  "cookies_content3": " You can manage cookies by adjusting your browser settings. However, please note that disabling cookies may affect site functionality.",
+  "cookies_content4": "For more information about cookies and how to manage them, visit",
+  "cookies_list1": "Improving site performance",
+  "cookies_list2": "Analyzing user behavior and preferences",
+  "cookies_list3": "Providing personalized content and advertising",
+  "cookies_list4": "Remembering your settings and preferences",
+  "FAQs": "FAQs",
+  "privacy_policy": "Privacy Policy",
+  "footer_bottom": "Magnetized Moment. All rights reserved.",
+  "magnets": "Magnets",
+  "cards": "Cards",
+  "combos": "Offers",
+  "sticker_business": "Custom Stickers & Business Cards",
+  "addToCartBtn": "Add to cart",
+  "type_currency": "BGN",
+  "magnets_title": "Magnets and magnet puzzles",
+  "contact_us_text1": "here",
+  "mm": "Magnetized Moment",
+  "firm_adress": "g.k. Vrabnitsa 2, Sofia",
+  "how_it_works": "How it works?",
+  "requiredFields": "Please fill in all required fields.",
+  "success": "Your message has been sent successfully!",
+  "error": "Failed to send your message. Please try again later.",
+  "emptyCart": "The cart is empty. Please add products before proceeding.",
+  "invalidAddress": "The entered address is invalid. Please check it and try again.",
+  "invalidDeliveryOption": "Please select a valid delivery option.",
+  "invalidOffice": "Please select a valid delivery office.",
+  "fillRequiredFields": "Please fill in all required fields correctly.",
+  "orderSuccess": "Your order has been successfully submitted.",
+  "orderFailure": "An error occurred while sending the order. Please try again.",
+  "quantity": "Quantity",
+  "price": "Price",
+  "upload_photos": "Upload photos",
+  "uploaded_photos": "Uploaded photos",
+  "remove": "Remove",
+  "total": "Total",
+  "order_complete": "Complete the order",
+  "cart": "Cart",
+  "empty_cart_header": "Your cart is empty",
+  "empty_cart_message": "Add products to continue checkout.",
+  "view_products": "View products",
+  "saved": "You saved",
+  "free_shipping_title": "Free Shipping",
+  "free_shipping_p": "Free shipping for orders over 50BGN.",
+  "express_shipping_title": "Express Shipping",
+  "express_shipping_p": "Orders placed by 3:00 PM are handled the same day.",
+  "magnet_info_title1": "Comes in elegant packaging",
+  "magnet_info_p1": "A little accent that will make a big impression",
+  "magnet_info_title2": "Your memories - always in plain sight",
+  "magnet_info_p2": "With a magnet that makes them even more special",
+  "magnet_discount": "For every 2 ordered magnets you get a discount",
+  "cards_info_title1": "The inside is clean",
+  "cards_info_p1": "Fill it with meaning",
+  "cards_info_title2": "Comes with an envelope",
+  "cards_info_p2": "Snow white and ready to pack your words",
+  "cards_discount": "For every 2 cards ordered you get a discount",
+  "free_shipping_cart": "Congratulations! You get free shipping.",
+  "left_for_free_shipping": "up to free shipping",
+  "finishing_order": "Finishing an order",
+  "city": "City",
+  "postcode": "Postcode",
+  "delivery_office": "To an Econt office",
+  "delivery_to_address": "To address",
+  "chose_office": "Choose an office",
+  "delivery_address": "Address for delivery",
+  "streetOrQuarter": "Street or neighbourhood",
+  "number": "Number",
+  "building": "Building",
+  "entry": "Entry",
+  "floor": "Floor",
+  "flat": "Flat",
+  "cookie_header": "This site uses cookies to improve your experience. Please select your settings.",
+  "accept": "Accept",
+  "decline": "Decline",
+  "options": "Preferences",
+  "options_header": "Cookie settings",
+  "analytic": "Analytical cookies",
+  "preference": "Preference cookies",
+  "save": "Save",
+  "decl": "Cancel",
+  "order_success": "Your order was accepted successfully!",
+  "thanks_for_choosing_us": "Thank you for choosing our store! Your order has been successfully registered in the system.",
+  "order_p_call": "Expect a call from our team soon to confirm order details. After successful confirmation, Your order will be processed and shipped to the address you provide or courier office.",
+  "order_p": "If you have further questions or wish to make changes to your order, you can contact us.",
+  "continue": "Continue to home page",
+  "photo_dimensions": "Photo dimensions",
+  "cut_add": "Cut and add",
+  "change_ratio": "Change the ratio",
+  "upload_photos_product": "Upload product photos",
+  "drag_drop": "drag & drop any files",
+  "or": "or",
+  "chose_file": "Choose a file from your device",
+  "photos": "Selected photos:",
+  "size": "Size:",
+  "billing_request": "I would like an invoice",
+  "billing":"Billing",
+  "shipping_price": "Delivery price:",
+  "send_order": "Send order",
+  "invoice": "I would like an invoice",
+  "individual": "Individual",
+  "company": "Company",
+  "company_name": "Company name",
+  "eic": "EIC",
+  "prp": "PRP",
+  "vat_yes": "VAT registered",
+  "vat_no": "Not VAT registered",
+  "vat": "VAT",
+  "images": "Images",
+  "close": "Close"
+}

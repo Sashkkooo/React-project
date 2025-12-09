@@ -7,14 +7,16 @@ export async function calculateShipping(formData, totalWeight = 5, totalPrice = 
                 senderClient: { name: "тест", phones: ["0000000000"] },
                 senderOfficeCode: "5802",
                 receiverClient: { name: formData.name, phones: [formData.phone] },
+                 city: { country: { code3: "BGR" }, name: formData.city, postCode: formData.postCode },
                 receiverOfficeCode: formData.selectedOffice.code,
                 packCount: 1,
                 shipmentType: "PACK",
-                weight: totalWeight > 0 ? totalWeight : 1,
+                weight: 5,
                 shipmentDescription: "Продукти от поръчката",
             },
             mode: "calculate",
         };
+
     }
 
     if (formData.deliveryOption === "address") {
@@ -34,12 +36,13 @@ export async function calculateShipping(formData, totalWeight = 5, totalPrice = 
                 },
                 packCount: 1,
                 shipmentType: "PACK",
-                weight: totalWeight > 0 ? totalWeight : 1,
+                weight: 5,
                 shipmentDescription: "Продукти от поръчката",
             },
             mode: "calculate",
         };
     }
+    
 
     const response = await fetch("http://localhost:8000/calculateShipping.php", {
         method: "POST",

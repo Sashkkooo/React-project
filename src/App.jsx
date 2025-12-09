@@ -1,28 +1,28 @@
 import { Route, Routes } from 'react-router'
 import './App.css'
-import Header from './components/Header'
-import About from './components/About'
+import Header from './components/Header/Header'
 import Contact from './components/Contact'
 import Faqs from './components/Faqs'
-import Footer from './components/footer'
-import Home from './components/Home'
 import PrivacyPolicy from './components/Privacypolicy'
-import Solution from './components/Solution'
 import NotFound from './components/NotFound'
-import Cart from './components/Cart'
-import Products from './components/Products'
-import Magnets from './components/Magnets'
-import Cards from './components/Cards'
-import ProductDetail from './components/ProductDetail'
-import Example from './components/Example'
-import Checkout from './components/Checkout'
-import Login from './components/Login'
-import Register from './components/Register'
-import Profile from './components/Profile'
-import ProtectedRoute from './components/ProtectionRoute'
-import AdminRoute from './components/AdminRoute'
-import AdminPanel from './components/AdminPanel'
-import GuestRoute from './components/GuestRoute'
+import Cart from './components/Cart/Cart'
+import Checkout from './components/Checkout/Checkout'
+import Login from './components/Authentication/Login'
+import Register from './components/Authentication/Register'
+import ProtectedRoute from './components/Profile/ProtectionRoute'
+import GuestRoute from './components/Authentication/GuestRoute'
+import OrderSuccess from './components/OrderSuccess'
+import Footer from './components/Footer/Footer'
+import Home from './components/Home/Home'
+import AdminPanel from './components/Admin/AdminPanel'
+import AdminRoute from './components/Admin/AdminRoute'
+import Products from './components/Products/Products'
+import Magnets from './components/Products/Magnets'
+import Cards from './components/Products/Cards'
+import ProductDetail from './components/Products/ProductDetail'
+import Profile from './components/Profile/Profile'
+import About from './components/AboutSolution/About'
+import Solution from './components/AboutSolution/Solution'
 
 function App() {
 
@@ -42,7 +42,6 @@ function App() {
         <Route path='/products/magnets' element={<Magnets />} />
         <Route path='/products/cards' element={<Cards />} />
         <Route path="/product-detail/:id" element={<ProductDetail />} />
-        <Route path="/example" element={<Example />} />
         <Route path="/checkout" element={<Checkout />} />
         <Route
           path="/login"
@@ -76,6 +75,7 @@ function App() {
             </AdminRoute>
           }
         />
+        <Route path="/order-success" element={<OrderSuccess />} />
       </Routes>
       <Footer />
     </>
