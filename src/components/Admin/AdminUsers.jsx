@@ -9,25 +9,30 @@ export default function AdminUsers() {
     const token = localStorage.getItem("jwt");
     const { t } = useTranslation();
 
-    useEffect(() => {
+    // функция за зареждане на потребители
+    const fetchUsers = () => {
         fetch("http://localhost:8000/getUsers.php", {
-            headers: { Authorization: `Bearer ${token}` }
+            headers: { Authorization: `Bearer ${token}` },
         })
             .then((res) => res.json())
             .then((data) => {
                 if (data.success) {
                     setUsers(data.users);
                 } else {
-                    setError(data.message || "Failed to load users");
+                    setError(data.message || t("failed_load_users"));
                 }
                 setLoading(false);
             })
             .catch((err) => {
                 console.error("Error loading users:", err);
-                setError("Network error while loading users");
+                setError(t("network_error_users"));
                 setLoading(false);
             });
-    }, [token]);
+    };
+
+    useEffect(() => {
+        fetchUsers();
+    }, [token, t]);
 
     const updateRole = async (_id, newRole) => {
         try {
@@ -35,15 +40,15 @@ export default function AdminUsers() {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                    Authorization: `Bearer ${token}`
+                    Authorization: `Bearer ${token}`,
                 },
-                body: JSON.stringify({ id: _id, role: newRole })
+                body: JSON.stringify({ id: _id, role: newRole }),
             });
             const data = await res.json();
             if (data.success) {
-                setUsers(users.map((u) => (u._id === _id ? { ...u, role: newRole } : u)));
+                fetchUsers(); // презарежда от сървъра
             } else {
-                alert(data.message || "Failed to update role");
+                alert(data.message || t("failed_update_role"));
             }
         } catch (err) {
             console.error("Error updating role:", err);
@@ -56,29 +61,31 @@ export default function AdminUsers() {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                    Authorization: `Bearer ${token}`
+                    Authorization: `Bearer ${token}`,
                 },
-                body: JSON.stringify({ id: _id })
+                body: JSON.stringify({ id: _id }),
             });
             const data = await res.json();
             if (data.success) {
-                setUsers(users.filter((u) => u._id !== _id));
+                fetchUsers(); // презарежда от сървъра
             } else {
-                alert(data.message || "Failed to delete user");
+                alert(data.message || t("failed_delete_user"));
             }
         } catch (err) {
             console.error("Error deleting user:", err);
         }
     };
 
-    if (loading) return <p className="text-center mt-10">Loading users...</p>;
+    if (loading) return <p className="text-center mt-10">{t("loading_users")}</p>;
     if (error) return <p className="text-center mt-10 text-red-600">{error}</p>;
 
     return (
         <div>
-            <h2 className="text-2xl font-bold text-red-700 mb-6">{t("tabs.users")}</h2>
+            <h2 className="text-2xl font-bold text-red-700 mb-6">
+                {t("tabs.users")}
+            </h2>
             {users.length === 0 ? (
-                <p className="text-gray-600">No users found.</p>
+                <p className="text-gray-600">{t("no_users_found")}</p>
             ) : (
                 <table className="w-full border-collapse border border-gray-300">
                     <thead>
@@ -90,9 +97,9 @@ export default function AdminUsers() {
                         </tr>
                     </thead>
                     <tbody>
-                        {users.map((u) => (
+                        {users.map((u, idx) => (
                             <UserRow
-                                key={u._id || u.id}
+                                key={u._id || u.id || idx}
                                 user={u}
                                 updateRole={updateRole}
                                 deleteUser={deleteUser}
