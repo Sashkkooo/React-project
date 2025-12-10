@@ -1,10 +1,12 @@
 import { useState } from "react";
 import AvatarEditor from "react-avatar-editor";
+import { useTranslation } from "react-i18next";
 
 export default function AvatarUpload({ user, setUser }) {
     const [selectedFile, setSelectedFile] = useState(null);
     const [editor, setEditor] = useState(null);
     const [scale, setScale] = useState(1.2);
+    const { t } = useTranslation();
 
     const handleFileChange = (e) => {
         const file = e.target.files[0];
@@ -45,7 +47,7 @@ export default function AvatarUpload({ user, setUser }) {
     return (
         <div className="mb-6">
             <label className="block text-sm font-medium text-gray-700 mb-1">
-                Change Avatar
+                {t("change_avatar")}
             </label>
             <input
                 type="file"
@@ -57,7 +59,7 @@ export default function AvatarUpload({ user, setUser }) {
             {selectedFile && (
                 <div className="mt-4">
                     <p className="text-xs text-gray-500 mb-2">
-                        Drag to move, use slider to zoom
+                        {t("drag_to_move")}
                     </p>
                     <AvatarEditor
                         ref={(ref) => setEditor(ref)}
@@ -82,7 +84,7 @@ export default function AvatarUpload({ user, setUser }) {
                         onClick={handleSaveAvatar}
                         className="mt-2 bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition"
                     >
-                        Save Avatar
+                        {t("saveAvatarBtn")}
                     </button>
                 </div>
             )}

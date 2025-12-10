@@ -1,13 +1,19 @@
 import FooterNavLink from "./FooterNavLink";
 import SocialIcon from "./SocialIcon";
+import { useTranslation } from "react-i18next";
+
 
 
 export default function Footer() {
+
+    const { t } = useTranslation();
+
+
     const navLinks = [
-        { to: "/", label: "Home", ariaLabel: "Начало" },
-        { to: "/faqs", label: "FAQ's", ariaLabel: "Често задавани въпроси" },
-        { to: "/about", label: "About", ariaLabel: "За нас" },
-        { to: "/privacy-policy", label: "Privacy Policy", ariaLabel: "Политика за поверителност" },
+        { to: "/", label: t("home"), ariaLabel: "Начало" },
+        { to: "/faqs", label: t("FAQs"), ariaLabel: "Често задавани въпроси" },
+        { to: "/about", label: t("about"), ariaLabel: "За нас" },
+        { to: "/privacy-policy", label: t("privacy_policy"), ariaLabel: "Политика за поверителност" },
     ];
 
     const socialLinks = [
@@ -59,7 +65,7 @@ export default function Footer() {
             </div>
 
             <div className="text-center mt-5 text-sm text-neutral-700">
-                <p>&copy; 2025 Magnetized Moment</p>
+                <p>&copy; 2025 {t("footer_bottom")}</p>
             </div>
         </footer>
     );

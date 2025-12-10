@@ -19,6 +19,7 @@ export default function AdminOrders() {
         }
         return "";
     };
+
     useEffect(() => {
         const fetchOrders = async () => {
             setLoading(true);
@@ -55,14 +56,15 @@ export default function AdminOrders() {
         }
     };
 
+    if (loading) return <p className="text-center mt-10">{t("loading_orders")}</p>;
+
     return (
         <div className="p-6">
             <h1 className="text-2xl font-bold mb-4">{t("orders")}</h1>
 
-            {loading ? (
-                <p>Loading orders...</p>
-            ) : (
-                <table className="w-full border-collapse border">
+            {/* Таблица за десктоп/таблет */}
+            <div className="overflow-x-auto hidden sm:block">
+                <table className="min-w-full border-collapse border">
                     <thead>
                         <tr className="bg-gray-200">
                             <th className="border p-2">{t("order_id")}</th>
@@ -85,7 +87,53 @@ export default function AdminOrders() {
                         ))}
                     </tbody>
                 </table>
-            )}
+            </div>
+
+            {/* Мобилен stacked layout */}
+            <div className="sm:hidden space-y-4">
+                {orders.map((order) => (
+                    <div
+                        key={order._id}
+                        className="border rounded-lg p-4 shadow-sm bg-white"
+                    >
+                        <p className="font-semibold break-all">
+                            {t("order_id")}: {order._id}
+                        </p>
+                        <p className="text-gray-700">
+                            {t("customer")}: {order.customerName}
+                        </p>
+                        <p className="text-orange-600 font-semibold">
+                            {t("total")}: {order.total} {t("type_currency")}
+                        </p>
+                        <p className="text-blue-700 font-semibold capitalize">
+                            {t("status")}: {order.status}
+                        </p>
+                        <p className="text-gray-600">
+                            {t("created")}: {formatDate(order.createdAt)}
+                        </p>
+                        <div className="flex flex-col sm:flex-row gap-2 mt-3">
+                            <button
+                                onClick={() => setSelectedOrder(order)}
+                                className="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700 transition"
+                            >
+                                {t("view")}
+                            </button>
+                            <button
+                                className="bg-green-600 text-white px-3 py-1 rounded hover:bg-green-700 transition"
+                                onClick={() => updateStatus(order._id, "completed")}
+                            >
+                                {t("complete")}
+                            </button>
+                            <button
+                                className="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700 transition"
+                                onClick={() => updateStatus(order._id, "cancelled")}
+                            >
+                                {t("cancel")}
+                            </button>
+                        </div>
+                    </div>
+                ))}
+            </div>
 
             {selectedOrder && (
                 <OrderDetails

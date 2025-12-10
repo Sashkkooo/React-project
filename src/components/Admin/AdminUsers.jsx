@@ -87,26 +87,68 @@ export default function AdminUsers() {
             {users.length === 0 ? (
                 <p className="text-gray-600">{t("no_users_found")}</p>
             ) : (
-                <table className="w-full border-collapse border border-gray-300">
-                    <thead>
-                        <tr className="bg-gray-100">
-                            <th className="border p-2">{t("name")}</th>
-                            <th className="border p-2">{t("email")}</th>
-                            <th className="border p-2">{t("role")}</th>
-                            <th className="border p-2">{t("actions")}</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {users.map((u, idx) => (
-                            <UserRow
-                                key={u._id || u.id || idx}
-                                user={u}
-                                updateRole={updateRole}
-                                deleteUser={deleteUser}
-                            />
+                <>
+                    {/* Таблица за десктоп/таблет */}
+                    <div className="overflow-x-auto hidden sm:block">
+                        <table className="min-w-full border-collapse border border-gray-300">
+                            <thead>
+                                <tr className="bg-gray-100">
+                                    <th className="border p-2">{t("name")}</th>
+                                    <th className="border p-2">{t("email")}</th>
+                                    <th className="border p-2">{t("role")}</th>
+                                    <th className="border p-2">{t("actions")}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {users.map((u, idx) => (
+                                    <UserRow
+                                        key={u._id || u.id || idx}
+                                        user={u}
+                                        updateRole={updateRole}
+                                        deleteUser={deleteUser}
+                                    />
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+
+                    {/* Мобилен stacked layout */}
+                    <div className="sm:hidden space-y-4">
+                        {users.map((user) => (
+                            <div
+                                key={user._id || user.id}
+                                className="border rounded-lg p-4 shadow-sm bg-white"
+                            >
+                                <p className="font-semibold">
+                                    {user.firstName} {user.lastName}
+                                </p>
+                                <p className="text-gray-700 break-words">{user.email}</p>
+                                <p className="text-blue-700 font-semibold capitalize">
+                                    {user.role}
+                                </p>
+                                <div className="flex gap-2 mt-3">
+                                    <button
+                                        onClick={() =>
+                                            updateRole(
+                                                user._id || user.id,
+                                                user.role === "admin" ? "user" : "admin"
+                                            )
+                                        }
+                                        className="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700 transition"
+                                    >
+                                        {user.role === "admin" ? t("make_user") : t("make_admin")}
+                                    </button>
+                                    <button
+                                        onClick={() => deleteUser(user._id || user.id)}
+                                        className="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700 transition"
+                                    >
+                                        {t("delete")}
+                                    </button>
+                                </div>
+                            </div>
                         ))}
-                    </tbody>
-                </table>
+                    </div>
+                </>
             )}
         </div>
     );

@@ -3,7 +3,8 @@ import ProductSection from "./ProductSection";
 import { useTranslation } from "react-i18next";
 
 export default function Cards() {
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
+    const lang = i18n.language;
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
@@ -31,14 +32,25 @@ export default function Cards() {
 
             {/* Grid container */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-4">
-                {cards.map((product) => (
-                    <ProductSection
-                        key={product._id}
-                        product={product}
-                        link={`/product-detail/${product._id}`}
-                        buttonText={t("addToCartBtn")}
-                    />
-                ))}
+                {cards.map((product) => {
+                    const productName =
+                        lang === "bg" ? product.name_bg : product.name;
+                    const productDescription =
+                        lang === "bg" ? product.description_bg : product.description;
+
+                    return (
+                        <ProductSection
+                            key={product._id}
+                            product={{
+                                ...product,
+                                name: productName,
+                                description: productDescription,
+                            }}
+                            link={`/product-detail/${product._id}`}
+                            buttonText={t("addToCartBtn")}
+                        />
+                    );
+                })}
             </div>
         </div>
     );

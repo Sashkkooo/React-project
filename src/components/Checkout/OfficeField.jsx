@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 export default function OfficeField({ office, cityID, setFormData }) {
     const [offices, setOffices] = useState([]);
     const [officeQuery, setOfficeQuery] = useState("");
     const [showOfficeDropdown, setShowOfficeDropdown] = useState(false);
+    const {t} = useTranslation();
 
     useEffect(() => {
         const fetchOffices = async () => {
@@ -33,7 +35,7 @@ export default function OfficeField({ office, cityID, setFormData }) {
 
     return (
         <div className="w-full relative">
-            <label className="block text-gray-700 mb-1">Офис на Еконт</label>
+            <label className="block text-gray-700 mb-1">{t("office")}</label>
             <input
                 type="text"
                 value={officeQuery}
@@ -41,7 +43,7 @@ export default function OfficeField({ office, cityID, setFormData }) {
                     setOfficeQuery(e.target.value);
                     setShowOfficeDropdown(true);
                 }}
-                placeholder="Започнете да пишете..."
+                placeholder={t("start_write")}
                 className="w-full border rounded-md p-2"
             />
 

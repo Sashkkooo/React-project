@@ -3,7 +3,8 @@ import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 export default function Magnets() {
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
+    const lang = i18n.language;
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
@@ -29,14 +30,25 @@ export default function Magnets() {
                 {t("magnets_title")}
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 px-4">
-                {magnetsAndPuzzles.map((product) => (
-                    <ProductSection
-                        key={product._id}
-                        product={product}
-                        link={`/product-detail/${product._id}`}
-                        buttonText={t("addToCartBtn")}
-                    />
-                ))}
+                {magnetsAndPuzzles.map((product) => {
+                    const productName =
+                        lang === "bg" ? product.name_bg : product.name;
+                    const productDescription =
+                        lang === "bg" ? product.description_bg : product.description;
+
+                    return (
+                        <ProductSection
+                            key={product._id}
+                            product={{
+                                ...product,
+                                name: productName,
+                                description: productDescription,
+                            }}
+                            link={`/product-detail/${product._id}`}
+                            buttonText={t("addToCartBtn")}
+                        />
+                    );
+                })}
             </div>
         </div>
     );

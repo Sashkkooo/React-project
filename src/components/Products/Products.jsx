@@ -36,7 +36,7 @@ export default function Products() {
             </div>
 
             <div className="max-w-[800px] mx-auto p-5 bg-white rounded-lg shadow-md leading-relaxed text-lg">
-                <h2 className="text-center text-2xl font-bold mb-5">How it works?</h2>
+                <h2 className="text-center text-2xl font-bold mb-5">{t("how_it_works")}</h2>
                 {steps.map((step, idx) => (
                     <p key={idx} className="text-center mb-2">{step}</p>
                 ))}

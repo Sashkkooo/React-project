@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import ProductForm from "./ProductForm";
 import ProductRow from "./ProductRow";
+import { useTranslation } from "react-i18next";
 
 export default function AdminProducts() {
     const [products, setProducts] = useState([]);
@@ -9,12 +10,14 @@ export default function AdminProducts() {
     const [editingProduct, setEditingProduct] = useState(null);
     const [formData, setFormData] = useState({});
     const token = localStorage.getItem("jwt");
+    const { t, i18n } = useTranslation();
+    const lang = i18n.language;
 
     // 📌 Зареждане на продукти
     const fetchProducts = async () => {
         try {
             const res = await fetch("http://localhost:8000/getProducts.php", {
-                headers: { Authorization: `Bearer ${token}` }
+                headers: { Authorization: `Bearer ${token}` },
             });
             const data = await res.json();
             if (data.success) {
@@ -41,9 +44,9 @@ export default function AdminProducts() {
                 method: "DELETE",
                 headers: {
                     "Content-Type": "application/json",
-                    Authorization: `Bearer ${token}`
+                    Authorization: `Bearer ${token}`,
                 },
-                body: JSON.stringify({ id: _id })
+                body: JSON.stringify({ id: _id }),
             });
             const data = await res.json();
             if (data.success) {
@@ -78,7 +81,7 @@ export default function AdminProducts() {
             weight: formData.weight,
             description: formData.description,
             imageUrls: formData.imageUrls,
-            options: formData.options
+            options: formData.options,
         };
 
         try {
@@ -86,13 +89,15 @@ export default function AdminProducts() {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
-                    Authorization: `Bearer ${token}`
+                    Authorization: `Bearer ${token}`,
                 },
-                body: JSON.stringify(payload)
+                body: JSON.stringify(payload),
             });
             const data = await res.json();
             if (data.success) {
-                setProducts(products.map((p) => (p._id === formData._id ? formData : p)));
+                setProducts(
+                    products.map((p) => (p._id === formData._id ? formData : p))
+                );
                 setEditingProduct(null);
             } else {
                 alert(data.message || "Failed to update product");
@@ -103,10 +108,14 @@ export default function AdminProducts() {
         }
     };
 
-
     // 📌 Добавяне на нов продукт
     const handleAdd = async () => {
-        if (!formData.name || !formData.price || !formData.category || !formData.files?.length) {
+        if (
+            !formData.name ||
+            !formData.price ||
+            !formData.category ||
+            !formData.files?.length
+        ) {
             alert("Please fill all required fields including at least one image");
             return;
         }
@@ -117,20 +126,20 @@ export default function AdminProducts() {
         payload.append("price", formData.price);
         if (formData.weight) payload.append("weight", formData.weight);
         if (formData.description) payload.append("description", formData.description);
-        if (formData.options) payload.append("options", JSON.stringify(formData.options));
+        if (formData.options)
+            payload.append("options", JSON.stringify(formData.options));
 
-        // ✅ Append all selected files
-        formData.files.forEach((file, idx) => {
-            payload.append(`images[]`, file); // multiple files under same key
+        formData.files.forEach((file) => {
+            payload.append("images[]", file);
         });
 
         try {
             const res = await fetch("http://localhost:8000/uploadAndAddProduct.php", {
                 method: "POST",
                 headers: {
-                    Authorization: `Bearer ${token}` // ⚠️ НЕ слагай Content-Type
+                    Authorization: `Bearer ${token}`, // ⚠️ НЕ слагай Content-Type
                 },
-                body: payload
+                body: payload,
             });
             const data = await res.json();
             if (data.success) {
@@ -142,7 +151,7 @@ export default function AdminProducts() {
                     weight: formData.weight,
                     description: formData.description,
                     options: formData.options || [],
-                    imageUrls: data.imageUrls
+                    imageUrls: data.imageUrls,
                 };
                 setProducts([...products, newProduct]);
                 setEditingProduct(null);
@@ -156,15 +165,15 @@ export default function AdminProducts() {
         }
     };
 
-
-
     // 📌 UI
     if (loading) return <p className="text-center mt-10">Loading products...</p>;
     if (error) return <p className="text-center mt-10 text-red-600">{error}</p>;
 
     return (
         <div>
-            <h2 className="text-2xl font-bold text-blue-700 mb-6">Admin Panel - Products</h2>
+            <h2 className="text-2xl font-bold text-blue-700 mb-6">
+                {t("products_nav")}
+            </h2>
             <button
                 onClick={() => {
                     setEditingProduct({});
@@ -172,29 +181,72 @@ export default function AdminProducts() {
                 }}
                 className="bg-green-600 text-white px-4 py-2 rounded mb-4 hover:bg-green-700 transition"
             >
-                Add Product
+                {t("add_product")}
             </button>
 
-            <table className="w-full border-collapse border border-gray-300 mb-6">
-                <thead>
-                    <tr className="bg-gray-100">
-                        <th className="border p-2">Name</th>
-                        <th className="border p-2">Category</th>
-                        <th className="border p-2">Price</th>
-                        <th className="border p-2">Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {products.map((p) => (
-                        <ProductRow
+            {/* Таблица за десктоп/таблет */}
+            <div className="overflow-x-auto hidden sm:block">
+                <table className="min-w-full border-collapse border border-gray-300 mb-6">
+                    <thead>
+                        <tr className="bg-gray-100">
+                            <th className="border p-2">{t("name")}</th>
+                            <th className="border p-2">{t("category")}</th>
+                            <th className="border p-2">{t("price")}</th>
+                            <th className="border p-2">{t("actions")}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {products.map((p) => {
+                            const productName = lang === "bg" ? p.name_bg || p.name : p.name;
+                            return (
+                                <ProductRow
+                                    key={p._id}
+                                    product={{ ...p, name: productName }}
+                                    handleEdit={handleEdit}
+                                    deleteProduct={deleteProduct}
+                                />
+                            );
+                        })}
+                    </tbody>
+                </table>
+            </div>
+
+            {/* Мобилен stacked layout */}
+            <div className="sm:hidden space-y-4">
+                {products.map((p) => {
+                    const productName = lang === "bg" ? p.name_bg || p.name : p.name;
+                    const productDescription =
+                        lang === "bg" ? p.description_bg || p.description : p.description;
+
+                    return (
+                        <div
                             key={p._id}
-                            product={p}
-                            handleEdit={handleEdit}
-                            deleteProduct={deleteProduct}
-                        />
-                    ))}
-                </tbody>
-            </table>
+                            className="border rounded-lg p-4 shadow-sm bg-white"
+                        >
+                            <p className="font-semibold">{productName}</p>
+                            <p className="text-gray-700">{p.category}</p>
+                            <p className="text-gray-600">{productDescription}</p>
+                            <p className="text-orange-600 font-semibold">
+                                {p.price} {t("type_currency")}
+                            </p>
+                            <div className="flex gap-2 mt-3">
+                                <button
+                                    onClick={() => handleEdit(p)}
+                                    className="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700 transition"
+                                >
+                                    {t("edit")}
+                                </button>
+                                <button
+                                    onClick={() => deleteProduct(p._id)}
+                                    className="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700 transition"
+                                >
+                                    {t("delete")}
+                                </button>
+                            </div>
+                        </div>
+                    );
+                })}
+            </div>
 
             {editingProduct && (
                 <ProductForm
@@ -207,5 +259,4 @@ export default function AdminProducts() {
             )}
         </div>
     );
-
 }

@@ -2,6 +2,7 @@ import { useState } from "react";
 import InputField from "../Checkout/InputField";
 import PasswordField from "./PasswordField";
 import AuthSubmitButton from "../SubmitButton";
+import { useTranslation } from "react-i18next";
 
 
 export default function Register() {
@@ -12,6 +13,7 @@ export default function Register() {
     const [lastName, setLastName] = useState("");
     const [error, setError] = useState(null);
     const [success, setSuccess] = useState(null);
+    const { t } = useTranslation();
 
     const handleRegister = async (e) => {
         e.preventDefault();
@@ -60,29 +62,32 @@ export default function Register() {
             <form onSubmit={handleRegister} className="flex flex-col gap-4">
                 <InputField
                     type="text"
-                    placeholder="First Name"
+                    placeholder={t("first_name")}
                     value={firstName}
                     onChange={(e) => setFirstName(e.target.value)}
                     required
                 />
                 <InputField
                     type="text"
-                    placeholder="Last Name"
+                    placeholder={t("last_name")}
                     value={lastName}
                     onChange={(e) => setLastName(e.target.value)}
                     required
                 />
                 <InputField
                     type="email"
-                    placeholder="Email"
+                    placeholder={t("email")}
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
                 />
-                <PasswordField value={password} onChange={(e) => setPassword(e.target.value)} />
+                <PasswordField
+                    placeholder={t("pass")}
+                    value={password} onChange={(e) => setPassword(e.target.value)} />
 
                 {/* ✅ Repeat Password */}
                 <PasswordField
+                    placeholder={t("rep_pass")}
                     value={repeatPassword}
                     onChange={(e) => setRepeatPassword(e.target.value)}
                 />

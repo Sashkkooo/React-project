@@ -2,14 +2,16 @@ import { useState } from "react";
 import { createPortal } from "react-dom";
 import Cropper from "react-easy-crop";
 import { getCroppedImg } from "../../utils/imageUtils";
+import { useTranslation } from "react-i18next";
 
 export default function CropModal({ image, aspectOptions = [1], onClose, onSave }) {
+
+    const {t} = useTranslation();
 
     const [crop, setCrop] = useState({ x: 0, y: 0 });
     const [zoom, setZoom] = useState(1);
     const [croppedAreaPixels, setCroppedAreaPixels] = useState(null);
 
-    // индекс на текущото aspect ratio
     const [aspectIndex, setAspectIndex] = useState(0);
     const aspect = aspectOptions[aspectIndex].value;
     const aspectLabel = aspectOptions[aspectIndex].label;
@@ -55,14 +57,14 @@ export default function CropModal({ image, aspectOptions = [1], onClose, onSave 
                         className="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300"
                         onClick={onClose}
                     >
-                        Cancel
+                        {t("cancel")}
                     </button>
                     {aspectOptions.length > 1 && aspectOptions.some(opt => opt.value !== 1) && (
                         <button
                             onClick={handleChangeAspect}
                             className="px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600"
                         >
-                            Change Aspect
+                            {t("change_ratio")}
                         </button>
                     )}
 
@@ -70,7 +72,7 @@ export default function CropModal({ image, aspectOptions = [1], onClose, onSave 
                         className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
                         onClick={handleSave}
                     >
-                        Save
+                        {t("save")}
                     </button>
                 </div>
             </div>

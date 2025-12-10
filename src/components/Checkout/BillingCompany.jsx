@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import InputField from "./InputField";
 
 export default function BillingCompany({ companyInfo, setFormData }) {
@@ -9,18 +10,20 @@ export default function BillingCompany({ companyInfo, setFormData }) {
         }));
     };
 
+    const {t} = useTranslation();
+
     return (
         <div className="space-y-2">
             <div className="grid grid-cols-2 gap-2">
                 <InputField
-                    label="Име на фирма"
+                    label={t("company_name")}
                     name="companyName"
                     value={companyInfo.companyName}
                     onChange={handleChange}
-                    placeholder="Фирма ООД"
+                    placeholder={t("company_name")}
                 />
                 <InputField
-                    label="ЕИК"
+                    label={t("eic")}
                     name="companyEIK"
                     value={companyInfo.companyEIK}
                     onChange={handleChange}
@@ -30,27 +33,27 @@ export default function BillingCompany({ companyInfo, setFormData }) {
 
             <div className="grid grid-cols-2 gap-2">
                 <InputField
-                    label="Град"
+                    label={t("city")}
                     name="companyCity"
                     value={companyInfo.companyCity}
                     onChange={handleChange}
-                    placeholder="София"
+                    placeholder={t("sofia")}
                 />
                 <InputField
-                    label="Адрес"
+                    label={t("address")}
                     name="companyAddress"
                     value={companyInfo.companyAddress}
                     onChange={handleChange}
-                    placeholder="Бул. България 1"
+                    placeholder={t("bul")}
                 />
             </div>
 
             <InputField
-                label="МОЛ"
+                label={t("prp")}
                 name="companyMOL"
                 value={companyInfo.companyMOL}
                 onChange={handleChange}
-                placeholder="Иван Иванов"
+                placeholder={t("name")}
             />
 
             {/* VAT toggle */}
@@ -68,7 +71,7 @@ export default function BillingCompany({ companyInfo, setFormData }) {
                             : "bg-gray-100 text-gray-800"
                         }`}
                 >
-                    Регистрирана по ДДС
+                    {t("vat_yes")}
                 </button>
                 <button
                     type="button"
@@ -83,7 +86,7 @@ export default function BillingCompany({ companyInfo, setFormData }) {
                             : "bg-gray-100 text-gray-800"
                         }`}
                 >
-                    Нерегистрирана по ДДС
+                    {t("vat_no")}
                 </button>
             </div>
         </div>

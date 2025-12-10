@@ -11,7 +11,7 @@ export default function Header() {
   const [open, setOpen] = useState(false);
   const { totalItems } = useContext(CartContext);
   const [isLoggedIn, setIsLoggedIn] = useState(Boolean(localStorage.getItem("jwt")));
-   const { i18n } = useTranslation();
+  const { i18n } = useTranslation();
 
   const toggleLanguage = () => {
     const newLang = i18n.language === "en" ? "bg" : "en";
@@ -34,8 +34,15 @@ export default function Header() {
   return (
     <header className="mb-2">
       <div className="fixed top-0 left-0 w-full h-20 bg-blue-400 flex justify-between items-center px-6 z-20">
-        <div className="logo">
-          <Link to="/" className="text-xl font-bold text-white">LOGO</Link>
+        <div className="flex items-center gap-2">
+          <Link to="/" className="block">
+            <img
+              src="https://drive.google.com/thumbnail?id=1x5inaIdnfbHZd4TTvp_OgXHZe_HLN4mK&sz=w1000"
+              alt="logo"
+              className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 object-contain"
+            />
+          </Link>
+          
         </div>
 
         <NavLinks className="hidden md:flex gap-6 font-semibold text-black" />

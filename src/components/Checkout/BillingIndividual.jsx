@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import InputField from "./InputField";
 
 export default function BillingIndividual({ billingInfo, setFormData }) {
@@ -9,19 +10,21 @@ export default function BillingIndividual({ billingInfo, setFormData }) {
         }));
     };
 
+    const {t} = useTranslation();
+
     return (
         <div className="space-y-2">
             <div className="grid grid-cols-2 gap-2">
                 <InputField
-                    label="Град"
+                    label={t("city")}
                     name="city"
                     value={billingInfo.city}
                     onChange={handleChange}
-                    placeholder="София"
+                    placeholder={t("sofia")}
                     required
                 />
                 <InputField
-                    label="Пощенски код"
+                    label={t("postcode")}
                     name="postCode"
                     value={billingInfo.postCode}
                     onChange={handleChange}
@@ -31,49 +34,49 @@ export default function BillingIndividual({ billingInfo, setFormData }) {
             </div>
 
             <InputField
-                label="Улица/Квартал"
+                label={t("streetOrQuarter")}
                 name="streetOrQuarter"
                 value={billingInfo.streetOrQuarter}
                 onChange={handleChange}
-                placeholder="Улица, квартал, жк"
+                placeholder={t("streetOrQuarter")}
                 required
             />
 
             <div className="grid grid-cols-2 gap-2">
                 <InputField
-                    label="Номер"
+                    label={t("number")}
                     name="num"
                     value={billingInfo.num}
                     onChange={handleChange}
-                    placeholder="Номер"
+                    placeholder={t("number")}
                 />
                 <InputField
-                    label="Блок"
+                    label={t("building")}
                     name="block"
                     value={billingInfo.block}
                     onChange={handleChange}
-                    placeholder="Блок"
+                    placeholder={t("building")}
                 />
                 <InputField
-                    label="Вход"
+                    label={t("entry")}
                     name="entrance"
                     value={billingInfo.entrance}
                     onChange={handleChange}
-                    placeholder="Вход"
+                    placeholder={t("entry")}
                 />
                 <InputField
-                    label="Етаж"
+                    label={t("floor")}
                     name="floor"
                     value={billingInfo.floor}
                     onChange={handleChange}
-                    placeholder="Етаж"
+                    placeholder={t("floor")}
                 />
                 <InputField
-                    label="Апартамент"
+                    label={t("flat")}
                     name="apartment"
                     value={billingInfo.apartment}
                     onChange={handleChange}
-                    placeholder="Апартамент"
+                    placeholder={t("flat")}
                 />
             </div>
         </div>

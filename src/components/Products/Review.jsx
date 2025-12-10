@@ -1,3 +1,5 @@
+import { useTranslation } from "react-i18next";
+
 // components/Product/ReviewList.jsx
 export default function ReviewList({
     reviews,
@@ -10,9 +12,11 @@ export default function ReviewList({
     handleEditReview,
     handleDeleteReview,
 }) {
+
+    const { t } = useTranslation();
     return (
         <div className="mt-8">
-            <h2 className="text-xl font-bold mb-4">Reviews</h2>
+            <h2 className="text-xl font-bold mb-4">{t("reviews")}</h2>
 
             {reviews.map((rev) => (
                 <div
@@ -48,7 +52,7 @@ export default function ReviewList({
                                 className="text-blue-600 text-sm hover:underline"
                                 onClick={() => handleEditReview(rev._id.$oid || rev._id)}
                             >
-                                Edit
+                                {t("edit")}
                             </button>
                         )}
                         {userRole === "admin" && (
@@ -56,7 +60,7 @@ export default function ReviewList({
                                 className="text-red-600 text-sm hover:underline"
                                 onClick={() => handleDeleteReview(rev._id.$oid || rev._id)}
                             >
-                                Delete
+                                {t("delete")}
                             </button>
                         )}
                     </div>
@@ -69,18 +73,18 @@ export default function ReviewList({
                         value={newReview}
                         onChange={(e) => setNewReview(e.target.value)}
                         className="w-full border rounded-lg p-2 focus:ring focus:ring-green-300"
-                        placeholder="Write your review..."
+                        placeholder={t("write_review_placeholder")}
                     />
                     <button
                         className="bg-green-600 text-white px-4 py-2 rounded mt-2 hover:bg-green-700 transition"
                         onClick={handleAddReview}
                     >
-                        Add Review
+                        {t("write_review")}
                     </button>
                 </div>
             ) : (
                 <p className="text-gray-600 mt-2">
-                    Трябва да сте логнат, за да оставите ревю.
+                    {t("review_logged")}
                 </p>
             )}
         </div>

@@ -1,3 +1,5 @@
+import { useTranslation } from "react-i18next";
+
 export default function ProductForm({
     editingProduct,
     formData,
@@ -5,10 +7,13 @@ export default function ProductForm({
     handleSave,
     handleAdd,
 }) {
+
+    const { t } = useTranslation();
+
     return (
         <div className="bg-gray-50 p-4 rounded shadow">
             <h3 className="text-xl font-bold mb-4">
-                {editingProduct._id ? "Edit Product" : "Add Product"}
+                {editingProduct._id ? t("edit_product") : t("add_product")}
             </h3>
 
             <input
@@ -16,32 +21,31 @@ export default function ProductForm({
                 value={formData.name || ""}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                 className="border p-2 w-full mb-2"
-                placeholder="Name"
+                placeholder={t("name")}
             />
             <input
                 type="text"
                 value={formData.category || ""}
                 onChange={(e) => setFormData({ ...formData, category: e.target.value })}
                 className="border p-2 w-full mb-2"
-                placeholder="Category"
+                placeholder={t("category")}
             />
             <input
                 type="number"
                 value={formData.price || ""}
                 onChange={(e) => setFormData({ ...formData, price: e.target.value })}
                 className="border p-2 w-full mb-2"
-                placeholder="Price"
+                placeholder={t("price")}
             />
             <textarea
                 value={formData.description || ""}
                 onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                 className="border p-2 w-full mb-2"
-                placeholder="Description"
+                placeholder={t("description")}
             />
 
-            {/* Images */}
             <div className="mb-4">
-                <h4 className="font-semibold mb-2">Images</h4>
+                <h4 className="font-semibold mb-2">{t("images")}</h4>
 
                 {formData.files?.map((file, idx) => (
                     <div key={idx} className="flex items-center gap-2 mb-2">
@@ -60,11 +64,14 @@ export default function ProductForm({
                             }}
                             className="bg-red-600 text-white px-2 py-1 rounded"
                         >
-                            Remove
+                            {t("remove")}
                         </button>
                     </div>
                 ))}
 
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                    {t("choose_file")}
+                </label>
                 <input
                     type="file"
                     multiple
@@ -78,15 +85,15 @@ export default function ProductForm({
                     }}
                     className="border p-2 w-full mb-2"
                 />
+
             </div>
 
             <button
                 onClick={editingProduct._id ? handleSave : handleAdd}
                 className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition"
             >
-                {editingProduct._id ? "Save Changes" : "Add Product"}
+                {editingProduct._id ? "Save Changes" : t("add_product")}
             </button>
         </div>
     );
 }
-    

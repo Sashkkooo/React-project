@@ -1,7 +1,12 @@
+import { useTranslation } from "react-i18next";
+
 export default function DeliveryOptionSelector({ deliveryOption, setFormData, calculateShipping }) {
+
+    const {t} = useTranslation();
+
     return (
         <div>
-            <label className="block text-gray-700 mb-2">Начин на доставка</label>
+            <label className="block text-gray-700 mb-2">{t("delivery")}</label>
             <div className="flex gap-3">
                 <button
                     type="button"
@@ -13,7 +18,7 @@ export default function DeliveryOptionSelector({ deliveryOption, setFormData, ca
                             : "bg-gray-100 text-gray-800"
                         }`}
                 >
-                    До офис
+                    {t("delivery_office")}
                 </button>
                 <button
                     type="button"
@@ -25,7 +30,7 @@ export default function DeliveryOptionSelector({ deliveryOption, setFormData, ca
                             : "bg-gray-100 text-gray-800"
                         }`}
                 >
-                    До адрес
+                    {t("delivery_to_address")}
                 </button>
             </div>
         </div>

@@ -1,3 +1,5 @@
+import { useTranslation } from "react-i18next";
+
     export default function BillingToggle({ billingRequired, billingType, setFormData }) {
         const handleCheckbox = (e) => {
             setFormData((prev) => ({ ...prev, billingRequired: e.target.checked }));
@@ -6,6 +8,8 @@
         const setType = (type) => {
             setFormData((prev) => ({ ...prev, billingType: type }));
         };
+
+        const {t} = useTranslation();
 
         return (
             <div className="space-y-2">
@@ -16,7 +20,7 @@
                         onChange={handleCheckbox}
                         className="h-4 w-4"
                     />
-                    <span className="text-gray-800">Фактура</span>
+                    <span className="text-gray-800">{t("billing_request")}</span>
                 </label>
 
                 {billingRequired && (
@@ -29,7 +33,7 @@
                                     : "bg-gray-100 text-gray-800"
                                 }`}
                         >
-                            Физическо лице
+                            {t("individual")}
                         </button>
                         <button
                             type="button"
@@ -39,7 +43,7 @@
                                     : "bg-gray-100 text-gray-800"
                                 }`}
                         >
-                            Фирма
+                            {t("company")}
                         </button>
                     </div>
                 )}

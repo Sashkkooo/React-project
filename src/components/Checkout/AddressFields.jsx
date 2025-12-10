@@ -1,6 +1,7 @@
 import StreetField from "./StreetField";
 import QuarterField from "./QuarterField";
-import InputField from "./InputField"; // ✅ използваме готовия компонент
+import InputField from "./InputField";
+import { useTranslation } from "react-i18next";
 
 export default function AddressFields({ address, cityID, setFormData }) {
     const handleChange = (e) => {
@@ -11,9 +12,11 @@ export default function AddressFields({ address, cityID, setFormData }) {
         }));
     };
 
+    const {t} = useTranslation();
+
     return (
         <div>
-            <h3 className="text-lg font-semibold text-gray-700 mb-2">Адрес за доставка</h3>
+            <h3 className="text-lg font-semibold text-gray-700 mb-2">{t("delivery_address")}</h3>
             <div className="space-y-2">
                 {/* Автокомплийт за квартал */}
                 <QuarterField cityID={cityID} setFormData={setFormData} />
@@ -24,39 +27,39 @@ export default function AddressFields({ address, cityID, setFormData }) {
                 {/* Grid за останалите полета */}
                 <div className="grid grid-cols-2 gap-2">
                     <InputField
-                        label="Номер"
+                        label={t("number")}
                         name="num"
                         value={address.num}
                         onChange={handleChange}
-                        placeholder="Номер"
+                        placeholder={t("number")}
                     />
                     <InputField
-                        label="Блок"
+                        label={t("building")}
                         name="block"
                         value={address.block}
                         onChange={handleChange}
-                        placeholder="Блок"
+                        placeholder={t("building")}
                     />
                     <InputField
-                        label="Вход"
+                        label={t("entry")}
                         name="entrance"
                         value={address.entrance}
                         onChange={handleChange}
-                        placeholder="Вход"
+                        placeholder={t("entry")}
                     />
                     <InputField
-                        label="Етаж"
+                        label={t("floor")}
                         name="floor"
                         value={address.floor}
                         onChange={handleChange}
-                        placeholder="Етаж"
+                        placeholder={t("floor")}
                     />
                     <InputField
-                        label="Апартамент"
+                        label={t("flat")}
                         name="apartment"
                         value={address.apartment}
                         onChange={handleChange}
-                        placeholder="Апартамент"
+                        placeholder={t("flat")}
                     />
                 </div>
             </div>

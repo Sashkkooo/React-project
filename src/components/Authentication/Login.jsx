@@ -3,8 +3,11 @@ import { Link, useNavigate } from "react-router-dom";
 import PasswordField from "./PasswordField";
 import InputField from "../Checkout/InputField";
 import AuthSubmitButton from "../SubmitButton";
+import { useTranslation } from "react-i18next";
 
 export default function Login() {
+
+    const { t } = useTranslation();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState(null);
@@ -47,20 +50,22 @@ export default function Login() {
             <form onSubmit={handleLogin} className="flex flex-col gap-4">
                 <InputField
                     type="email"
-                    placeholder="Email"
+                    placeholder={t("email")}
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
                 />
 
-                <PasswordField value={password} onChange={(e) => setPassword(e.target.value)} />
+                <PasswordField
+                    placeholder={t("pass")}
+                    value={password} onChange={(e) => setPassword(e.target.value)} />
 
-                <AuthSubmitButton label="Login" />
+                <AuthSubmitButton label={t("login")} />
 
                 <p className="mt-4 text-sm text-gray-600">
-                    Все още нямаш профил?{" "}
+                    {t("no_acc_yet")}{" "}
                     <Link to="/register" className="text-blue-600 hover:underline">
-                        Регистрирай се
+                        {t("register")}
                     </Link>
                 </p>
             </form>

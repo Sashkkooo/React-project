@@ -32,159 +32,6 @@
       "description": "Personal stickers and business cards"
     }
   },
-  "products": {
-    "magnets": {
-      "name": "Personalized magnets",
-      "description": "Personalized magnets",
-      "options": {
-        "1": {
-          "description": "Personalized magnet"
-        },
-        "2": {
-          "description": "Personalized magnets"
-        }
-      }
-    },
-    "puzzles": {
-      "puzzle1": {
-        "name": "Magnet puzzle with 4 pieces"
-      },
-      "puzzle2": {
-        "name": "Magnet puzzle with 6 pieces"
-      },
-      "puzzle3": {
-        "name": "Magnet puzzle with 9 pieces"
-      },
-      "puzzle4": {
-        "name": "Magnet puzzle with 12 pieces"
-      },
-      "puzzle5": {
-        "name": "Magnet puzzle with 15 pieces"
-      },
-      "puzzle6": {
-        "name": "Magnet puzzle with 16 pieces"
-      },
-      "puzzle7": {
-        "name": "Magnet puzzle with 18 pieces"
-      }
-    },
-    "cards": {
-      "If_you_want": {
-        "name": "If you want to feel like a star",
-        "description": "Bueatiful card for your ocasion"
-      },
-      "predefined2": {
-        "name": "happy national holiday",
-        "description": "Beautiful pre-designed card 2"
-      },
-      "predefined3": {
-        "name": "The mother is one",
-        "description": "Beautiful pre-designed card 3"
-      },
-      "predefined4": {
-        "name": "Team Groom",
-        "description": "Beautiful pre-designed card 1"
-      },
-      "predefined5": {
-        "name": "Bride To Be",
-        "description": "Beautiful pre-designed card 1"
-      },
-      "predefined6": {
-        "name": "Blow the candle",
-        "description": "Beautiful pre-designed card 1"
-      },
-      "predefined7": {
-        "name": "Wisdom comes with the years",
-        "description": "Beautiful pre-designed card 1"
-      },
-      "predefined8": {
-        "name": "You know you're old",
-        "description": "Beautiful pre-designed card 1"
-      },
-      "predefined9": {
-        "name": "Queen's Birthday",
-        "description": "Beautiful pre-designed card 1"
-      },
-      "predefined10": {
-        "name": "Birthday party is like a fitness",
-        "description": "Beautiful pre-designed card 1"
-      },
-      "predefined11": {
-        "name": "Happy баба Марта",
-        "description": "Beautiful pre-designed card 1"
-      },
-      "predefined12": {
-        "name": "Do not extinguish",
-        "description": "Beautiful pre-designed card 1"
-      },
-      "predefined13": {
-        "name": "Happy name day",
-        "description": "Beautiful pre-designed card 1"
-      },
-      "predefined14": {
-        "name": "It's your time",
-        "description": "Beautiful pre-designed card 1"
-      },
-      "predefined15": {
-        "name": "Congratulations",
-        "description": "Beautiful pre-designed card 1"
-      },
-      "predefined16": {
-        "name": "You are naked",
-        "description": "Beautiful pre-designed card 1"
-      },
-      "predefined17": {
-        "name": "Keep calm",
-        "description": "Beautiful pre-designed card 1"
-      },
-      "predefined18": {
-        "name": "Your life is",
-        "description": "Beautiful pre-designed card 1"
-      },
-      "predefined19": {
-        "name": "Years are just",
-        "description": "Beautiful pre-designed card 1"
-      },
-      "predefined20": {
-        "name": "However you spin",
-        "description": "Beautiful pre-designed card 1"
-      },
-      "predefined21": {
-        "name": "Without you I am",
-        "description": "Beautiful pre-designed card 1"
-      },
-      "predefined22": {
-        "name": "Love inspires you",
-        "description": "Beautiful pre-designed card 1"
-      },
-      "predefined23": {
-        "name": "Happy mother's day",
-        "description": "Beautiful pre-designed card 1"
-      },
-      "predefined24": {
-        "name": "You are like",
-        "description": "Beautiful pre-designed card 1"
-      },
-      "predefined25": {
-        "name": "To mom",
-        "description": "Beautiful pre-designed card 1"
-      },
-      "custom": {
-        "name": "Custom Cards",
-        "options": {
-          "1": {
-            "description": "Create your own custom card with a photo - 1 card"
-          },
-          "3": {
-            "description": "Create your own custom cards with photos - 3 cards"
-          },
-          "5": {
-            "description": "Create your own custom cards with photos - 5 cards"
-          }
-        }
-      }
-    }
-  },
   "mission": "Our Mission",
   "mission_text": "We believe that small gestures bring great joy and that's why we create handmade magnets and cards. Each piece is made with attention to details and imbued with lots of love. Our mission is to help you express your emotions in an original and memorable way.",
   "team": "Our Team",
@@ -221,7 +68,7 @@
   "name": "Name",
   "role": "Role",
   "order_details": "Order Details",
-  "delivery": "Delivery",
+  "delivery": "Delivery method",
   "office": "Office",
   "office_address": "Office Address",
   "address": "Address",
@@ -243,7 +90,7 @@
   "chose_number_a": "If you would like to order a different quantity than the one listed on the page, please contact us via the contact form",
   "fr_a_q": "Frequently Asked Questions",
   "what_other_services_q": "What other services do you offer?",
-  "what_other_services_a": "You can check out the full list of services we provide",
+  "what_other_services_a": "You can check out the full list of services we provide ",
   "logo_website_q": "What is the timeframe for creating a logo or website?",
   "logo_website_a": "The timeframe for creating logos and websites ranges from 1 to 4 weeks, depending on the complexity and specifics of the project.",
   "logo_what_q": "What does the logo creation service include?",
@@ -266,7 +113,7 @@
   "phone": "Phone Number",
   "message": "Message",
   "sendBtn": "Send",
-  "title": "Privacy Policy",
+  "privacy_title": "Privacy Policy",
   "intro1": "We at ",
   "intro2": "are committed to protecting our customers' personal data and complying with the General Data Protection Regulation (GDPR) and the Personal Data Protection Act of the Republic of Bulgaria. This privacy policy outlines the data we collect, how we use it, and your rights regarding it.",
   "data_controller_title": "Data Controller",
@@ -317,7 +164,7 @@
   "cookies_content1": "We use cookies to enhance your experience on our website. Cookies are small text files stored on your device when you visit the site. They help us recognize your browser, analyze site traffic, and improve functionality.",
   "cookies_content2": " The main purposes of using cookies include:",
   "cookies_content3": " You can manage cookies by adjusting your browser settings. However, please note that disabling cookies may affect site functionality.",
-  "cookies_content4": "For more information about cookies and how to manage them, visit",
+  "cookies_content4": "For more information about cookies and how to manage them, visit:",
   "cookies_list1": "Improving site performance",
   "cookies_list2": "Analyzing user behavior and preferences",
   "cookies_list3": "Providing personalized content and advertising",
@@ -403,7 +250,7 @@
   "continue": "Continue to home page",
   "photo_dimensions": "Photo dimensions",
   "cut_add": "Cut and add",
-  "change_ratio": "Change the ratio",
+  "change_ratio": "Change aspect",
   "upload_photos_product": "Upload product photos",
   "drag_drop": "drag & drop any files",
   "or": "or",
@@ -411,7 +258,7 @@
   "photos": "Selected photos:",
   "size": "Size:",
   "billing_request": "I would like an invoice",
-  "billing":"Billing",
+  "billing": "Billing",
   "shipping_price": "Delivery price:",
   "send_order": "Send order",
   "invoice": "I would like an invoice",
@@ -424,5 +271,44 @@
   "vat_no": "Not VAT registered",
   "vat": "VAT",
   "images": "Images",
-  "close": "Close"
+  "close": "Close",
+  "no_acc_yet": "Don't have an account yet?",
+  "pass": "Password",
+  "rep_pass": "Repeat Password",
+  "acc_settings": "Account Settings",
+  "change_avatar": "Change Avatar",
+  "drag_to_move": "Drag to move, use slider to zoom",
+  "saveAvatarBtn": "Save Avatar",
+  "delete": "Delete",
+  "make_admin": "Make Admin",
+  "make_user": "Make User",
+  "edit": "Edit",
+  "add_product": "Add Product",
+  "category": "Category",
+  "description": "Description",
+  "edit_product": "Edit Product",
+  "choose_file": "Choose File",
+  "no_file_chosen": "No file chosen",
+  "reviews": "Reviews",
+  "write_review": "Add review",
+  "review_logged": "To write a review, please log in to your account.",
+  "write_review_placeholder": "Write your review here...",
+  "404_title": "404 - Page Not Found",
+  "404_message": "Sorry, the page you are looking for does not exist.",
+  "go_home": "Go back to Home Page",
+  "order_summary": "Order Summary",
+  "subtotal": "Subtotal",
+  "checkout": "Checkout",
+  "in_stock": "In Stock",
+  "upload_please": "Please upload",
+  "more_photos": "more photo(s)",
+  "sofia": "Sofia",
+  "bul": "Bul. Bulgaria 1",
+  "city_load": "Please wait cities to load and choose from the menu",
+  "start_write": "Start to write...",
+  "quarter": "Quarter",
+  "upload_error": "Please upload {{missing}} more photos for {{name}}"
+
+
+
 }

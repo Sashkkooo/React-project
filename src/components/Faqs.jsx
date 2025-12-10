@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router";
+import { useTranslation } from "react-i18next";
+
 
 function AccordionItem({ question, answer, defaultOpen = false }) {
   const [open, setOpen] = useState(defaultOpen);
@@ -22,62 +24,68 @@ function AccordionItem({ question, answer, defaultOpen = false }) {
 }
 
 export default function Faqs() {
+  const { t } = useTranslation();
+
+
   const faqs = [
-    { question: "How to order?", answer: <>Step 1 <br /> Step 2 <br /> Step 3 <br /> Step 4</> },
-    { question: "Order time", answer: "Orders are processed within X days." },
-    { question: "Delivery offer", answer: "We deliver nationwide with fast shipping." },
-    { question: "Photo resolution", answer: "Please upload high-resolution photos for best results." },
+    { question: t("how_to_order_q"), answer: <>{t("how_to_order_a")} <br /> {t("how_to_order_1")} <br /> {t("how_to_order_2")} <br /> {t("how_to_order_3")} <br /> {t("how_to_order_4")} </> },
+    { question: t("order_time_q"), answer: t("order_time_a") },
+    { question: t("kind_of_photos_q"), answer: t("kind_of_photos_a") },
+    { question: t("photo_resolution_q"), answer: t("photo_resolution_a") },
+    { question: t("delivery_offer_q"), answer: t("delivery_offer_a") },
+
     {
-      question: "Choosing number of items",
+      question: t("chose_number_q"),
       answer: (
         <>
-          You can choose any number of items.{" "}
+          {t("chose_number_a")}{" "}
           <Link to="/contact" className="text-blue-600 underline">
-            Contact us.
+            {t("contact_us_text1")}
           </Link>
         </>
       ),
     },
     {
-      question: "Other services",
+      question: t("what_other_services_q"),
       answer: (
         <>
-          We also offer design services.{" "}
+          {t("what_other_services_a")}{" "}
           <Link to="/solution" className="text-blue-600 underline">
-            Learn more.
+            {t("contact_us_text1")}
           </Link>
         </>
       ),
     },
-    { question: "Logo & Website", answer: "We provide logo and website design packages." },
+    { question: t("logo_website_q"), answer: t("logo_website_a") },
     {
-      question: "What is a logo?",
+      question: t("logo_what_q"),
       answer: (
         <>
-          A logo is a brand identity. <br />
-          It represents your business. <br />
-          It builds recognition. <br />
-          It adds trust.
+          {t("logo_what_a")} <br />
+          {t("logo_what_1")} <br />
+          {t("logo_what_2")} <br />
+          {t("logo_what_3")} <br />
+          {t("logo_what_4")}
         </>
       ),
     },
     {
-      question: "What is a website?",
+      question: t("website_what_q"),
       answer: (
         <>
-          A website is your online presence. <br />
-          It informs customers. <br />
-          It builds credibility. <br />
-          It drives sales.
+          {t("website_what_a")} <br />
+          {t("website_what_1")} <br />
+          {t("website_what_2")} <br />
+          {t("website_what_3")}
         </>
       ),
     },
-    { question: "Final design", answer: "We deliver the final design in multiple formats." },
+    { question: t("final_design_q"), answer: t("final_design_a") },
   ];
 
   return (
     <div className="max-w-[800px] mx-auto p-4">
-      <h2 className="text-center text-2xl font-bold mb-6">FAQs</h2>
+      <h2 className="text-center text-2xl font-bold mb-6">{t("FAQs")}</h2>
       {faqs.map((faq, idx) => (
         <AccordionItem key={idx} {...faq} />
       ))}

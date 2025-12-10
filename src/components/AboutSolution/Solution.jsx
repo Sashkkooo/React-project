@@ -39,7 +39,6 @@ export default function Solution() {
 
   return (
     <div className="flex flex-col items-center p-5">
-      {/* Toolbar */}
       <PageHeader props={{ title: t("services") }} />
 
       <div className="w-full max-w-[1000px] mt-5">

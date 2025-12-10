@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 export default function QuarterField({ cityID, setFormData }) {
     const [quarters, setQuarters] = useState([]);
     const [query, setQuery] = useState("");
     const [showDropdown, setShowDropdown] = useState(false);
+    const {t} = useTranslation();
 
     useEffect(() => {
         const fetchQuarters = async () => {
@@ -29,7 +31,7 @@ export default function QuarterField({ cityID, setFormData }) {
 
     return (
         <div className="w-full relative">
-            <label className="block text-gray-700 mb-1">Квартал</label>
+            <label className="block text-gray-700 mb-1">{t("quarter")}</label>
             <input
                 type="text"
                 value={query}
@@ -37,7 +39,7 @@ export default function QuarterField({ cityID, setFormData }) {
                     setQuery(e.target.value);
                     setShowDropdown(true);
                 }}
-                placeholder="Започнете да пишете..."
+                placeholder={t("start_write")}
                 className="w-full border rounded-md p-2"
             />
 

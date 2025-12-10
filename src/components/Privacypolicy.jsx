@@ -1,93 +1,99 @@
 import { Link } from "react-router"
+import { useTranslation } from "react-i18next";
+
 
 export default function PrivacyPolicy() {
+
+  const { t } = useTranslation();
+
+
   return (
     <div className="max-w-[800px] mx-auto p-5 bg-white rounded-lg shadow-lg leading-relaxed">
-      <h1 className="text-3xl font-bold text-white-800 mb-6">Privacy Policy</h1>
+      <h1 className="text-3xl font-bold text-white-800 mb-6">{t("privacy_title")}</h1>
 
       <p className="mb-4">
-        Intro text with <strong>Magnetized Moment</strong> company details.
+        {t("intro1")} <strong>{t("mm")}</strong> {t("intro2")}.
       </p>
 
-      <h2 className="text-2xl font-semibold text-white-800 mb-3">1. Data Controller</h2>
+      <h2 className="text-2xl font-semibold text-white-800 mb-3">1. {t("data_controller_title")}</h2>
       <p className="mb-4">
-        The data controller is <strong>Magnetized Moment</strong>, located at <strong>Company Address</strong>.
-        For inquiries, <Link to="/contact" className="text-blue-600 underline">contact us</Link>.
+        {t("data_controller_content1")} <strong>{t("mm")}</strong>, {t("data_controller_content2")} <strong>{t("firm_adress")}</strong>.
+        {t("data_controller_content3")}, <Link to="/contact" className="text-blue-600 underline">{t("contact_us_text1")}</Link>.
       </p>
 
-      <h2 className="text-2xl font-semibold text-white-800 mb-3">2. Data Collected</h2>
-      <p className="mb-2">We collect the following types of data:</p>
+      <h2 className="text-2xl font-semibold text-white-800 mb-3">2. {t("data_collected_title")}</h2>
+      <p className="mb-2">{t("data_collected_content")}</p>
       <ul className="list-disc ml-6 mb-4">
-        <li>Personal information</li>
-        <li>Contact details</li>
-        <li>Order information</li>
-        <li>Payment details</li>
-        <li>Delivery address</li>
-        <li>Other relevant data</li>
+        <li>{t("data_collected_list1")}</li>
+        <li>{t("data_collected_list2")}</li>
+        <li>{t("data_collected_list3")}</li>
+        <li>{t("data_collected_list4")}</li>
+        <li>{t("data_collected_list5")}</li>
+        <li>{t("data_collected_list6")}</li>
       </ul>
 
-      <h2 className="text-2xl font-semibold text-white-800 mb-3">3. Data Processing</h2>
-      <p className="mb-2">Your data is processed for the following purposes:</p>
+      <h2 className="text-2xl font-semibold text-white-800 mb-3">3. {t("data_processing_title")}</h2>
+      <p className="mb-2">{t("data_processing_content")}</p>
       <ul className="list-disc ml-6 mb-4">
-        <li>Order fulfillment</li>
-        <li>Customer support</li>
-        <li>Marketing communication</li>
-        <li>Legal compliance</li>
+        <li>{t("data_processing_list1")}</li>
+        <li>{t("data_processing_list2")}</li>
+        <li>{t("data_processing_list3")}</li>
+        <li>{t("data_processing_list4")}</li>
       </ul>
 
-      <h2 className="text-2xl font-semibold text-white-800 mb-3">4. Legal Basis</h2>
-      <p className="mb-2">We process data based on:</p>
+      <h2 className="text-2xl font-semibold text-white-800 mb-3">4. {t("legal_basis_title")}</h2>
+      <p className="mb-2">{t("legal_basis_content")}</p>
       <ul className="list-disc ml-6 mb-4">
-        <li>Consent</li>
-        <li>Contractual necessity</li>
-        <li>Legal obligations</li>
-        <li>Legitimate interests</li>
+        <li>{t("legal_basis_list1")}</li>
+        <li>{t("legal_basis_list2")}</li>
+        <li>{t("legal_basis_list3")}</li>
+        <li>{t("legal_basis_list4")}</li>
       </ul>
 
-      <h2 className="text-2xl font-semibold text-white-800 mb-3">5. Data Retention</h2>
-      <p className="mb-4">Data is retained only as long as necessary for the purposes stated.</p>
+      <h2 className="text-2xl font-semibold text-white-800 mb-3">5. {t("data_retention_title")}</h2>
+      <p className="mb-4">{t("data_retention_content")}</p>
 
-      <h2 className="text-2xl font-semibold text-white-800 mb-3">6. Data Sharing</h2>
-      <p className="mb-2">We may share data with:</p>
+      <h2 className="text-2xl font-semibold text-white-800 mb-3">6. {t("data_sharing_title")}</h2>
+      <p className="mb-2">{t("data_sharing_content")}</p>
       <ul className="list-disc ml-6 mb-4">
-        <li>Service providers</li>
-        <li>Delivery partners</li>
-        <li>Payment processors</li>
-        <li>Legal authorities</li>
+        <li>{t("data_sharing_list1")}</li>
+        <li>{t("data_sharing_list2")}</li>
+        <li>{t("data_sharing_list3")}</li>
+        <li>{t("data_sharing_list4")}</li>
       </ul>
 
-      <h2 className="text-2xl font-semibold text-white-800 mb-3">7. Your Rights</h2>
-      <p className="mb-2">You have the right to:</p>
+      <h2 className="text-2xl font-semibold text-white-800 mb-3">7. {t("your_rights_title")}</h2>
+      <p className="mb-2">{t("your_rights_content")}</p>
       <ul className="list-disc ml-6 mb-4">
-        <li>Access your data</li>
-        <li>Request corrections</li>
-        <li>Request deletion</li>
-        <li>Restrict processing</li>
-        <li>Object to processing</li>
-        <li>Data portability</li>
+        <li>{t("your_rights_list1")}</li>
+        <li>{t("your_rights_list2")}</li>
+        <li>{t("your_rights_list3")}</li>
+        <li>{t("your_rights_list4")}</li>
+        <li>{t("your_rights_list5")}</li>
+        <li>{t("your_rights_list6")}</li>
       </ul>
 
-      <h2 className="text-2xl font-semibold text-white-800 mb-3">8. Security Measures</h2>
-      <p className="mb-4">We implement technical and organizational measures to protect your data.</p>
+      <h2 className="text-2xl font-semibold text-white-800 mb-3">8. {t("security_measures_title")}</h2>
+      <p className="mb-4">{t("security_measures_content")}</p>
 
-      <h2 className="text-2xl font-semibold text-white-800 mb-3">9. Complaints</h2>
+      <h2 className="text-2xl font-semibold text-white-800 mb-3">9. {t("complaints_title")}</h2>
       <p className="mb-4">
-        You may file complaints with the Data Protection Authority:{" "}
+        {t("complaints_content")}{" "}
         <Link to="http://www.cpdp.bg" className="text-blue-600 underline">www.cpdp.bg</Link>.
       </p>
 
-      <h2 className="text-2xl font-semibold text-white-800 mb-3">Cookies</h2>
-      <p className="mb-2">We use cookies to improve your experience.</p>
-      <p className="mb-2">Types of cookies include:</p>
+      <h2 className="text-2xl font-semibold text-white-800 mb-3">{t("cookies_title")}</h2>
+      <p className="mb-2">{t("cookies_list1")}</p>
+      <p className="mb-2">{t("cookies_list2")}</p>
+      <p className="mb-2">{t("cookies_list3")}</p>
+      <p className="mb-2">{t("cookies_list4")}</p>
       <ul className="list-disc ml-6 mb-4">
-        <li>Essential cookies</li>
-        <li>Performance cookies</li>
-        <li>Functional cookies</li>
-        <li>Advertising cookies</li>
+        <li>{t("cookies_content1")}</li>
+        <li>{t("cookies_content2")}</li>
+        <li>{t("cookies_content3")}</li>
+        <li>{t("cookies_content4")}</li>
       </ul>
-      <p className="mb-2">You can manage cookies in your browser settings.</p>
       <p className="mb-4">
-        Learn more at{" "}
         <Link to="https://www.allaboutcookies.org/" className="text-blue-600 underline">
           AllAboutCookies.org
         </Link>.

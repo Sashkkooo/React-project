@@ -1,4 +1,8 @@
-export default function SubmitButton({ label = "Изпрати поръчка", disabled = false }) {
+import { useTranslation } from "react-i18next";
+
+export default function SubmitButton({ disabled = false }) {
+
+    const {t} = useTranslation();
     return (
         <button
             type="submit"
@@ -8,7 +12,7 @@ export default function SubmitButton({ label = "Изпрати поръчка", 
                     ? "bg-gray-400 text-gray-200 cursor-not-allowed"
                     : "bg-green-600 text-white hover:bg-green-700"}`}
         >
-            {label}
+          { t("send_order") }
         </button>
     );
 }

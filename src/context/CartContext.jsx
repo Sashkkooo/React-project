@@ -18,13 +18,10 @@ export const CartProvider = ({ children }) => {
     });
   }, []);
 
-  const removeFromCart = useCallback((index) => {
-    setCart((prev) => {
-      const updated = [...prev];
-      updated.splice(index, 1); // премахва само елемента на дадения индекс
-      return updated;
-    });
+  const removeFromCart = useCallback((id) => {
+    setCart((prev) => prev.filter((item) => item.id !== id));
   }, []);
+
 
 
   const updateQty = useCallback((id, qty) => {

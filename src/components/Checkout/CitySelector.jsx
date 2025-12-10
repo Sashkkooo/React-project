@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 export default function CitySelector({ formData, setFormData }) {
     const [cities, setCities] = useState([]);
     const [cityQuery, setCityQuery] = useState("");
     const [showDropdown, setShowDropdown] = useState(false);
+    const {t} = useTranslation();
 
     useEffect(() => {
         const fetchCities = async () => {
@@ -29,7 +31,7 @@ export default function CitySelector({ formData, setFormData }) {
 
     return (
         <div className="w-full relative">
-            <label className="block text-gray-700 mb-1">Град</label>
+            <label className="block text-gray-700 mb-1">{t("city")}</label>
             <input
                 type="text"
                 value={cityQuery}
@@ -37,7 +39,7 @@ export default function CitySelector({ formData, setFormData }) {
                     setCityQuery(e.target.value);
                     setShowDropdown(true);
                 }}
-                placeholder="Започнете да пишете..."
+                placeholder={t("start_write")}
                 className="w-full border rounded-md p-2"
             />
 
@@ -62,7 +64,7 @@ export default function CitySelector({ formData, setFormData }) {
                         </li>
                     ))}
                     {filteredCities.length === 0 && (
-                        <li className="p-2 text-gray-500">Няма съвпадения</li>
+                        <li className="p-2 text-gray-500">{t("city_load")}</li>
                     )}
                 </ul>
             )}

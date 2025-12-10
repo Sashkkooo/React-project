@@ -3,9 +3,11 @@ import AvatarUpload from "./AvatarUpload";
 import InputField from "../Checkout/InputField";
 import Avatar from "./Avatar";
 import { Link } from "react-router";
+import { useTranslation } from "react-i18next";
 
 export default function Profile() {
     const [user, setUser] = useState(null);
+    const { t } = useTranslation();
 
     useEffect(() => {
         const storedUser = {
@@ -27,7 +29,7 @@ export default function Profile() {
 
     return (
         <div className="max-w-xl mx-auto mt-12 bg-white rounded-lg shadow-lg p-6 border border-gray-200">
-            <h2 className="text-2xl font-bold text-green-700 mb-6">Account Settings</h2>
+            <h2 className="text-2xl font-bold text-green-700 mb-6">{t("acc_settings")}</h2>
 
             {/* Header с аватар и инфо */}
             <div className="flex items-center gap-4 mb-6">
@@ -41,7 +43,7 @@ export default function Profile() {
                     <p className="text-lg font-semibold text-gray-800">
                         {user.firstName} {user.lastName}
                     </p>
-                    <p className="text-sm text-gray-600">{user.email}</p>
+                    <p className="font-semibold break-all">{user.email}</p>
                     <span
                         className={`inline-block mt-1 px-2 py-1 text-xs rounded ${user.role === "admin" ? "bg-red-600" : "bg-blue-600"
                             } text-white`}
@@ -56,26 +58,26 @@ export default function Profile() {
 
             {/* User info полета */}
             <div className="grid grid-cols-1 gap-4">
-                <InputField label="First Name" value={user.firstName} type="text" name="firstName" disabled />
-                <InputField label="Last Name" value={user.lastName} type="text" name="lastName" disabled />
-                <InputField label="Email" value={user.email} type="email" name="email" disabled />
+                <InputField label={t("first_name")} value={user.firstName} type="text" name="firstName" disabled />
+                <InputField label={t("last_name")} value={user.lastName} type="text" name="lastName" disabled />
+                <InputField label={t("email")} value={user.email} type="email" name="email" disabled />
             </div>
 
             {/* Admin панел + Logout */}
             <div className="mt-6 flex justify-between items-center">
                 {user.role === "admin" && (
-                    <Link 
+                    <Link
                         to="/admin"
                         className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition"
                     >
-                        Admin Panel
+                        {t("admin_panel")}
                     </Link>
                 )}
                 <button
                     onClick={handleLogout}
                     className="bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-700 transition"
                 >
-                    Logout
+                    {t("logout")}
                 </button>
             </div>
         </div>

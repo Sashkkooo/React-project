@@ -14,6 +14,7 @@ import ShippingPrice from "./ShippingPrice";
 import AlertBox from "./AlertBox";
 import SubmitButton from "./SubmitButton";
 import { calculateShipping } from "../../utils/shippingPriceUtil";
+import { useTranslation } from "react-i18next";
 
 
 export default function Checkout() {
@@ -21,6 +22,7 @@ export default function Checkout() {
     const uploadFiles = location.state?.uploadFiles || {};
     const finalPrice = location.state?.finalPrice || 0;
     const navigate = useNavigate();
+    const {t} = useTranslation();
 
     const [alert, setAlert] = useState(null);
     const [shippingPrice, setShippingPrice] = useState(null);
@@ -124,18 +126,18 @@ export default function Checkout() {
         <div className="max-w-[600px] mx-auto bg-gray-50 p-6 rounded-lg shadow-md">
             <form className="space-y-4" onSubmit={handleSubmit}>
                 <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">
-                    Завърши поръчка
+                    {t("order_complete")}
                 </h2>
 
                 {/* Основни полета */}
-                <InputField label="Имейл" type="email" name="email" value={formData.email} onChange={handleChange} required />
-                <InputField label="Име" name="name" value={formData.name} onChange={handleChange} required />
-                <InputField label="Фамилия" name="surname" value={formData.surname} onChange={handleChange} required />
-                <InputField label="Телефон" type="tel" name="phone" value={formData.phone} onChange={handleChange} required />
+                <InputField label={t("email")} type="email" name="email" value={formData.email} onChange={handleChange} required />
+                <InputField label={t("first_name")} name="name" value={formData.name} onChange={handleChange} required />
+                <InputField label={t("last_name")} name="surname" value={formData.surname} onChange={handleChange} required />
+                <InputField label={t("phone")} type="tel" name="phone" value={formData.phone} onChange={handleChange} required />
 
                 {/* Град */}
                 <CitySelector formData={formData} setFormData={setFormData} />
-                <InputField label="Пощенски код" name="postCode" value={formData.postCode} onChange={handleChange} required />
+                <InputField label={t("postcode")} name="postCode" value={formData.postCode} onChange={handleChange} required />
 
                 {/* Доставка */}
                 <DeliveryOptionSelector deliveryOption={formData.deliveryOption} setFormData={setFormData} />
